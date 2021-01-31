@@ -25,7 +25,7 @@ class DetailsView extends GetView<DetailsController> {
                 children: [
                   const _DetailSection(),
                   const _NutritionSection(),
-                  const SizedBox(height: 36),
+                  const SizedBox(height: 16),
                   _buildBarcode(context, marketItem.barcode)
                 ],
               ),

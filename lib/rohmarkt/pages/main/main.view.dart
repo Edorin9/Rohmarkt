@@ -36,14 +36,18 @@ class _Body extends StatelessWidget {
     return GetBuilder<MainController>(
       builder: (_) {
         final marketItems = _.items;
-        return ListView.separated(
-          padding: const EdgeInsets.all(16),
-          itemCount: marketItems.length,
-          itemBuilder: (context, index) => MarketItemCard(
-            item: marketItems[index],
-            onTap: () => _.onItemClicked(marketItems[index]),
+        return GlowingOverscrollIndicator(
+          axisDirection: AxisDirection.down,
+          color: Colors.tealAccent,
+          child: ListView.separated(
+            padding: const EdgeInsets.all(16),
+            itemCount: marketItems.length,
+            itemBuilder: (context, index) => MarketItemCard(
+              item: marketItems[index],
+              onTap: () => _.onItemClicked(marketItems[index]),
+            ),
+            separatorBuilder: (context, index) => const SizedBox(height: 8),
           ),
-          separatorBuilder: (context, index) => const SizedBox(height: 8),
         );
       },
     );
