@@ -37,4 +37,22 @@ class MarketItem {
     nutrition = Nutrition.fromJson(json);
     isVegan = json['Vegan'] as bool;
   }
+
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'Bezeichnung': name,
+        'Hersteller': manufacturer,
+        'Kategorie': category,
+        'BildUrl': imageUrl,
+        'Barcode': barcode,
+        'PortionInGramm': portionInGram,
+        'Einheit': unit,
+        'Zucker': nutrition.sugar,
+        'Kalorien': unit,
+        'Eiweiss': unit,
+        'Kohlenhydrate': unit,
+        'Fett': unit,
+        'Wasser': unit,
+        'Vegan': isVegan,
+      };
 }
