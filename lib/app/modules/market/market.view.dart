@@ -21,7 +21,7 @@ class MainView extends GetView<MainController> {
       body: Stack(
         children: [
           const _Body(),
-          Obx(() => controller.isLoading.value ? Loader() : const SizedBox()),
+          Obx(() => controller.isLoading ? Loader() : const SizedBox()),
         ],
       ),
     );
