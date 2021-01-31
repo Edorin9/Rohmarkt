@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 
-import '../../../core/util/network_info.dart';
 import '../../data/repository.dart';
+import '../../data/services/network_info.dart';
 import '../../data/sources/dreamshape_api.dart';
-import 'main.controller.dart';
+import 'market.controller.dart';
 
 class MainBinding extends Bindings {
   @override

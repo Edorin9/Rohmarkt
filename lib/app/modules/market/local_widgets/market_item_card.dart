@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../_widgets/vegan_indicator.dart';
 import '../../../data/models/market_item.dart';
+import '../../../widgets/vegan_indicator.dart';
 
 class MarketItemCard extends StatelessWidget {
   const MarketItemCard({
@@ -30,7 +30,7 @@ class MarketItemCard extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            _ItemInfo(item: item),
+            _ItemContent(item: item),
           ],
         ),
       ),
@@ -38,8 +38,8 @@ class MarketItemCard extends StatelessWidget {
   }
 }
 
-class _ItemInfo extends StatelessWidget {
-  const _ItemInfo({
+class _ItemContent extends StatelessWidget {
+  const _ItemContent({
     Key key,
     @required this.item,
   }) : super(key: key);

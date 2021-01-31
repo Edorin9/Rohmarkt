@@ -1,17 +1,14 @@
 import 'package:get/get_navigation/get_navigation.dart';
 
-import '../pages/details/details.binding.dart';
-import '../pages/details/details.view.dart';
-import '../pages/main/main.binding.dart';
-import '../pages/main/main.view.dart';
+import '../modules/details/details.barrel.dart';
+import '../modules/market/market.barrel.dart';
 
 part 'routes.dart';
 
-// ignore: avoid_classes_with_only_static_members
 class Pages {
   static final routes = [
     GetPage(
-      name: Routes.main,
+      name: Routes.market,
       page: () => const MainView(),
       binding: MainBinding(),
     ),

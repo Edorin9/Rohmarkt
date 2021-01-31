@@ -2,10 +2,10 @@ import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../_widgets/vegan_indicator.dart';
+import '../../widgets/vegan_indicator.dart';
 import 'details.controller.dart';
-import 'widgets/detail_row.dart';
-import 'widgets/nutrition_row.dart';
+import 'local_widgets/detail_row.dart';
+import 'local_widgets/nutrition_row.dart';
 
 class DetailsView extends GetView<DetailsController> {
   const DetailsView({Key key}) : super(key: key);

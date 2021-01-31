@@ -4,7 +4,7 @@ import 'package:meta/meta.dart';
 
 import '../../data/models/market_item.dart';
 import '../../data/repository.dart';
-import '../../routing/pages.dart';
+import '../../routes/pages.dart';
 
 class MainController extends GetxController {
   final Repository repository;
@@ -28,7 +28,7 @@ class MainController extends GetxController {
     isLoading.value = true;
     (await repository.getMarketItems()).fold(
       (failure) {
-        Get.snackbar('Error', failure.errorMessage);
+        Get.snackbar('Error', failure.message);
         isLoading.value = false;
       },
       (marketItems) {

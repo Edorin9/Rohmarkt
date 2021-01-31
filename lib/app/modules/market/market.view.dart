@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'main.controller.dart';
-import 'widgets/loader.dart';
-import 'widgets/market_item_card.dart';
+import 'local_widgets/loader.dart';
+import 'local_widgets/market_item_card.dart';
+import 'market.controller.dart';
 
 class MainView extends GetView<MainController> {
   const MainView({Key key}) : super(key: key);
