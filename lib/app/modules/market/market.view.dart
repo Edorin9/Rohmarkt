@@ -5,8 +5,8 @@ import 'local_widgets/loader.dart';
 import 'local_widgets/market_item_card.dart';
 import 'market.controller.dart';
 
-class MainView extends GetView<MainController> {
-  const MainView({Key key}) : super(key: key);
+class MarketView extends GetView<MarketController> {
+  const MarketView({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,28 +28,25 @@ class MainView extends GetView<MainController> {
   }
 }
 
-class _Body extends StatelessWidget {
+class _Body extends GetView<MarketController> {
   const _Body({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<MainController>(
-      builder: (_) {
-        final marketItems = _.items;
-        return GlowingOverscrollIndicator(
-          axisDirection: AxisDirection.down,
-          color: Colors.tealAccent,
-          child: ListView.separated(
-            padding: const EdgeInsets.all(16),
-            itemCount: marketItems.length,
-            itemBuilder: (context, index) => MarketItemCard(
-              item: marketItems[index],
-              onTap: () => _.onItemClicked(marketItems[index]),
-            ),
-            separatorBuilder: (context, index) => const SizedBox(height: 8),
+    return Obx(
+      () => GlowingOverscrollIndicator(
+        axisDirection: AxisDirection.down,
+        color: Colors.tealAccent,
+        child: ListView.separated(
+          padding: const EdgeInsets.all(16),
+          itemCount: controller.items.length,
+          itemBuilder: (context, index) => MarketItemCard(
+            item: controller.items[index],
+            onTap: () => controller.onItemClicked(controller.items[index]),
           ),
-        );
-      },
+          separatorBuilder: (context, index) => const SizedBox(height: 8),
+        ),
+      ),
     );
   }
 }

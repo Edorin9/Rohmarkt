@@ -6,20 +6,20 @@ import '../../data/models/market_item.dart';
 import '../../data/repository.dart';
 import '../../routes/pages.dart';
 
-class MainController extends GetxController {
+class MarketController extends GetxController {
   final Repository _repository;
 
-  MainController({
+  MarketController({
     @required Repository repository,
   }) : _repository = repository;
 
-  static MainController i = Get.find<MainController>();
+  static MarketController i = Get.find<MarketController>();
 
   final _isLoading = false.obs;
   bool get isLoading => _isLoading.value;
   set isLoading(bool value) => _isLoading.value = value;
 
-  final List<MarketItem> items = [];
+  final items = <MarketItem>[].obs;
 
   @override
   void onInit() {

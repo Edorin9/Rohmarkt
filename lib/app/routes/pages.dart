@@ -9,8 +9,8 @@ class Pages {
   static final routes = [
     GetPage(
       name: Routes.market,
-      page: () => const MainView(),
-      binding: MainBinding(),
+      page: () => const MarketView(),
+      binding: MarketBinding(),
     ),
     GetPage(
       name: Routes.details,
