@@ -33,11 +33,11 @@ class _Body extends GetView<MarketController> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => GlowingOverscrollIndicator(
-        axisDirection: AxisDirection.down,
-        color: Colors.tealAccent,
-        child: ListView.separated(
+    return GlowingOverscrollIndicator(
+      axisDirection: AxisDirection.down,
+      color: Colors.tealAccent,
+      child: Obx(
+        () => ListView.separated(
           padding: const EdgeInsets.all(16),
           itemCount: controller.items.length,
           itemBuilder: (context, index) => MarketItemCard(
