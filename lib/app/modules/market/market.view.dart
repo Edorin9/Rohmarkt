@@ -11,18 +11,30 @@ class MarketView extends GetView<MarketController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.teal,
-        title: const Text(
-          'Rohmarkt',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-      ),
+      appBar: const _AppBar(),
       body: Stack(
         children: [
           const _Body(),
           Obx(() => controller.isLoading ? Loader() : const SizedBox()),
         ],
+      ),
+    );
+  }
+}
+
+class _AppBar extends StatelessWidget with PreferredSizeWidget {
+  const _AppBar({Key key}) : super(key: key);
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      backgroundColor: Colors.teal,
+      title: const Text(
+        'Rohmarkt',
+        style: TextStyle(fontWeight: FontWeight.bold),
       ),
     );
   }

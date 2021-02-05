@@ -12,44 +12,14 @@ class DetailsView extends GetView<DetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    final marketItem = controller.marketItem;
-    return Scaffold(
+    return const Scaffold(
       body: CustomScrollView(
         slivers: [
-          const _SliverAppHeader(),
-          SliverToBoxAdapter(
-            child: Container(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const _DetailSection(),
-                  const _NutritionSection(),
-                  const SizedBox(height: 16),
-                  _buildBarcode(context, marketItem.barcode)
-                ],
-              ),
-            ),
-          ),
+          _SliverAppHeader(),
+          _SliverContent(),
         ],
       ),
     );
-  }
-
-  Widget _buildBarcode(BuildContext context, String barcode) {
-    if (barcode.isNotEmpty) {
-      return Center(
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width / 2,
-          child: BarcodeWidget(
-            data: barcode,
-            barcode: Barcode.ean13(),
-          ),
-        ),
-      );
-    } else {
-      return const SizedBox();
-    }
   }
 }
 
@@ -92,6 +62,30 @@ class _SliverAppHeader extends GetView<DetailsController> {
         ),
       ),
       expandedHeight: 180,
+    );
+  }
+}
+
+class _SliverContent extends GetView<DetailsController> {
+  const _SliverContent({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: const [
+            _DetailSection(),
+            _NutritionSection(),
+            SizedBox(height: 16),
+            _BarcodeView()
+          ],
+        ),
+      ),
     );
   }
 }
@@ -176,6 +170,38 @@ class _NutritionSection extends GetView<DetailsController> {
           amount: '${marketItem.nutrition.water}${marketItem.unit}',
         ),
       ],
+    );
+  }
+}
+
+class _BarcodeView extends GetView<DetailsController> {
+  const _BarcodeView({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) =>
+      (controller.marketItem.barcode.isNotEmpty)
+          ? _Barcode(barcode: controller.marketItem.barcode)
+          : const SizedBox();
+}
+
+class _Barcode extends StatelessWidget {
+  const _Barcode({
+    Key key,
+    @required this.barcode,
+  }) : super(key: key);
+
+  final String barcode;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width / 2,
+        child: BarcodeWidget(
+          data: barcode,
+          barcode: Barcode.ean13(),
+        ),
+      ),
     );
   }
 }
