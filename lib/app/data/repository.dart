@@ -22,8 +22,8 @@ class Repository {
       try {
         final marketItems = await _api.getMarketItems();
         return Right(marketItems);
-      } on ServerException catch (e) {
-        return Left(ServerFailure(e.message));
+      } on NetworkException catch (e) {
+        return Left(NetworkFailure(e.message));
       }
     } else {
       return const Left(ConnectionFailure('Please connect to the internet'));

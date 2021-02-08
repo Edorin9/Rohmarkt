@@ -13,8 +13,6 @@ class MarketController extends GetxController {
     @required Repository repository,
   }) : _repository = repository;
 
-  static MarketController i = Get.find<MarketController>();
-
   final _isLoading = false.obs;
   bool get isLoading => _isLoading.value;
   set isLoading(bool value) => _isLoading.value = value;

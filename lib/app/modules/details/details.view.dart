@@ -34,7 +34,6 @@ class _SliverAppHeader extends GetView<DetailsController> {
       backgroundColor: Colors.transparent,
       forceElevated: true,
       floating: true,
-      snap: true,
       flexibleSpace: FlexibleSpaceBar(
         centerTitle: true,
         title: Row(

@@ -14,7 +14,7 @@ class DreamShapeApi extends GetConnect {
     if (response.isOk) {
       return response.bodyString.toList();
     } else {
-      throw ServerException(
+      throw NetworkException(
         'Error Code ${response.statusCode}: ${response.statusText}',
       );
     }

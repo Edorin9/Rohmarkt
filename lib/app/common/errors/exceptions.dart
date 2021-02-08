@@ -1,12 +1,12 @@
 // Datasource-level failures
 
-class ServerException implements Exception {
+class NetworkException implements Exception {
   final String message;
 
-  const ServerException([this.message]);
+  const NetworkException([this.message]);
 
   @override
-  String toString() => 'Server Exception: ${message ?? 'Error unknown'}';
+  String toString() => 'Network Exception: ${message ?? 'Error unknown'}';
 }
 
 class CacheException implements Exception {

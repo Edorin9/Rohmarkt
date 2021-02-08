@@ -11,11 +11,9 @@ abstract class Failure extends Equatable {
   List<Object> get props => [message];
 }
 
-// Repository-level failures
-
-class ServerFailure extends Failure {
-  static const defaultMessage = 'Server Failure';
-  const ServerFailure([String message = defaultMessage]) : super(message);
+class NetworkFailure extends Failure {
+  static const defaultMessage = 'Network Failure';
+  const NetworkFailure([String message = defaultMessage]) : super(message);
 }
 
 class ConnectionFailure extends Failure {
