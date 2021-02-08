@@ -1,6 +1,4 @@
-import 'nutrition.dart';
-
-class MarketItem {
+class MarketItem { // TODO: entitify (check number trivia bloc)
   int id;
   String name;
   String manufacturer;
@@ -9,21 +7,13 @@ class MarketItem {
   String barcode;
   int portionInGram;
   String unit;
-  Nutrition nutrition;
+  int sugar;
+  int calories;
+  int protein;
+  int carbohydrates;
+  int fat;
+  int water;
   bool isVegan;
-
-  MarketItem({
-    this.id,
-    this.name,
-    this.manufacturer,
-    this.category,
-    this.imageUrl,
-    this.barcode,
-    this.portionInGram,
-    this.unit,
-    this.nutrition,
-    this.isVegan,
-  });
 
   MarketItem.fromJson(dynamic json) {
     id = (json['id'] as num) as int;
@@ -32,9 +22,14 @@ class MarketItem {
     category = json['Kategorie'] as String;
     imageUrl = json['BildUrl'] as String;
     barcode = json['Barcode'] as String;
-    portionInGram = (json['PortionInGramm'] as num).toInt();
+    portionInGram = (json['PortionInGramm'] as num) as int;
     unit = json['Einheit'] as String;
-    nutrition = Nutrition.fromJson(json);
+    sugar = (json['Zucker'] as num) as int;
+    calories = (json['Kalorien'] as num) as int;
+    protein = (json['Eiweiss'] as num) as int;
+    carbohydrates = (json['Kohlenhydrate'] as num) as int;
+    fat = (json['Fett'] as num) as int;
+    water = (json['Wasser'] as num) as int;
     isVegan = json['Vegan'] as bool;
   }
 
@@ -47,12 +42,12 @@ class MarketItem {
         'Barcode': barcode,
         'PortionInGramm': portionInGram,
         'Einheit': unit,
-        'Zucker': nutrition.sugar,
-        'Kalorien': unit,
-        'Eiweiss': unit,
-        'Kohlenhydrate': unit,
-        'Fett': unit,
-        'Wasser': unit,
+        'Zucker': sugar,
+        'Kalorien': calories,
+        'Eiweiss': protein,
+        'Kohlenhydrate': carbohydrates,
+        'Fett': fat,
+        'Wasser': water,
         'Vegan': isVegan,
       };
 }

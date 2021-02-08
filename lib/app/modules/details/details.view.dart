@@ -65,7 +65,7 @@ class _SliverAppHeader extends GetView<DetailsController> {
   }
 }
 
-class _SliverContent extends GetView<DetailsController> {
+class _SliverContent extends StatelessWidget {
   const _SliverContent({
     Key key,
   }) : super(key: key);
@@ -141,32 +141,32 @@ class _NutritionSection extends GetView<DetailsController> {
         const SizedBox(height: 8),
         NutritionRow(
           label: 'Zucker',
-          amount: '${marketItem.nutrition.sugar}${marketItem.unit}',
+          amount: '${marketItem.sugar}${marketItem.unit}',
         ),
         const SizedBox(height: 3),
         NutritionRow(
           label: 'Kalorien',
-          amount: '${marketItem.nutrition.calories}${marketItem.unit}',
+          amount: '${marketItem.calories}${marketItem.unit}',
         ),
         const SizedBox(height: 3),
         NutritionRow(
           label: 'Eiweiss',
-          amount: '${marketItem.nutrition.protein}${marketItem.unit}',
+          amount: '${marketItem.protein}${marketItem.unit}',
         ),
         const SizedBox(height: 3),
         NutritionRow(
           label: 'Kohlenhydrate',
-          amount: '${marketItem.nutrition.carbohydrates}${marketItem.unit}',
+          amount: '${marketItem.carbohydrates}${marketItem.unit}',
         ),
         const SizedBox(height: 3),
         NutritionRow(
           label: 'Fett',
-          amount: '${marketItem.nutrition.fat}${marketItem.unit}',
+          amount: '${marketItem.fat}${marketItem.unit}',
         ),
         const SizedBox(height: 3),
         NutritionRow(
           label: 'Wasser',
-          amount: '${marketItem.nutrition.water}${marketItem.unit}',
+          amount: '${marketItem.water}${marketItem.unit}',
         ),
       ],
     );

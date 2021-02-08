@@ -1,10 +1,12 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 
-final ThemeData appThemeData = ThemeData(
-  primaryColor: Colors.teal,
-  accentColor: Colors.tealAccent,
-  fontFamily: 'Georgia',
-  textTheme: const TextTheme(
-    headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-  ),
-);
+// final ThemeData appThemeData = ThemeData(
+//   primaryColor: Colors.purple,
+//   accentColor: Colors.purpleAccent,
+//   splashColor: Colors.purpleAccent,
+//   highlightColor: Colors.purple,
+//   fontFamily: 'Georgia',
+//   textTheme: const TextTheme(
+//     headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+//   ),
+// );

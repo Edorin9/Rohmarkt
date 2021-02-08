@@ -37,7 +37,6 @@ class MarketController extends GetxController {
       },
       (marketItems) {
         items.addAll(marketItems);
-        update();
         isLoading = false;
       },
     );

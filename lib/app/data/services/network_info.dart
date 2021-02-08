@@ -5,8 +5,8 @@ class NetworkInfo {
   final DataConnectionChecker _dataConnectionChecker;
 
   NetworkInfo({
-    @required DataConnectionChecker dcc,
-  }) : _dataConnectionChecker = dcc;
+    @required DataConnectionChecker dataConnectionChecker,
+  }) : _dataConnectionChecker = dataConnectionChecker;
 
   Future<bool> get isConnected => _dataConnectionChecker.hasConnection;
 }
