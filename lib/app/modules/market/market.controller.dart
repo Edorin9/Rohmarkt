@@ -15,10 +15,12 @@ class MarketController extends GetxController {
 
   // ! View-Model
 
-  // loading state
-  final isLoading = false.obs;
-  // list state
-  final items = <MarketItem>[].obs;
+  // loader
+  final _isLoading = false.obs;
+  bool get isLoading => _isLoading.value;
+  // list
+  final _items = <MarketItem>[].obs;
+  List<MarketItem> get items => _items;
 
   // ! Override Methods
 
@@ -38,16 +40,16 @@ class MarketController extends GetxController {
 
   Future<void> _getMarketItems() async {
     // start load
-    isLoading.value = true;
+    _isLoading.value = true;
     // call api
     final marketItemsResult = await _repository.getMarketItems();
     marketItemsResult.fold(
       // show error
       (failure) => Get.snackbar('Error', failure.message),
       // add items
-      (marketItems) => items.addAll(marketItems),
+      (marketItems) => _items.addAll(marketItems),
     );
     // stop load
-    isLoading.value = false;
+    _isLoading.value = false;
   }
 }

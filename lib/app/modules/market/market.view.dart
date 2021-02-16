@@ -15,7 +15,7 @@ class MarketView extends GetView<MarketController> {
       body: Stack(
         children: [
           const _Body(),
-          Obx(() => controller.isLoading() ? Loader() : const SizedBox()),
+          Obx(() => controller.isLoading ? Loader() : const SizedBox()),
         ],
       ),
     );
