@@ -4,9 +4,10 @@ import 'package:get/get.dart';
 import 'app/routes/pages.dart';
 import 'binding.dart';
 
-Future<void> main() async {
+void main() {
   runApp(
     GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(accentColor: Colors.tealAccent),
       initialBinding: AppBinding(),
       initialRoute: Routes.market,

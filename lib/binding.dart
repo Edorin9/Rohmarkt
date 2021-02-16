@@ -1,5 +1,6 @@
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:get/get.dart';
+import 'package:rohmarkt/app/data/sources/dummy_json_provider.dart';
 
 import 'app/data/repository.dart';
 import 'app/data/services/network_info.dart';
@@ -12,6 +13,7 @@ class AppBinding extends Bindings {
     Get.lazyPut<Repository>(
       () => Repository(
         api: Get.find(),
+        dummyProvider: Get.find(),
         networkInfo: Get.find(),
       ),
     );
@@ -26,6 +28,10 @@ class AppBinding extends Bindings {
     // DataConnectionChecker
     Get.lazyPut<DataConnectionChecker>(
       () => DataConnectionChecker(),
+    );
+    // DummyJsonProvider
+    Get.lazyPut<DummyJsonProvider>(
+      () => DummyJsonProvider(),
     );
   }
 }

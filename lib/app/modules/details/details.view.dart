@@ -24,9 +24,7 @@ class DetailsView extends GetView<DetailsController> {
 }
 
 class _SliverAppHeader extends GetView<DetailsController> {
-  const _SliverAppHeader({
-    Key key,
-  }) : super(key: key);
+  const _SliverAppHeader({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -66,9 +64,7 @@ class _SliverAppHeader extends GetView<DetailsController> {
 }
 
 class _SliverContent extends StatelessWidget {
-  const _SliverContent({
-    Key key,
-  }) : super(key: key);
+  const _SliverContent({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -90,9 +86,7 @@ class _SliverContent extends StatelessWidget {
 }
 
 class _DetailSection extends GetView<DetailsController> {
-  const _DetailSection({
-    Key key,
-  }) : super(key: key);
+  const _DetailSection({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -120,9 +114,7 @@ class _DetailSection extends GetView<DetailsController> {
 }
 
 class _NutritionSection extends GetView<DetailsController> {
-  const _NutritionSection({
-    Key key,
-  }) : super(key: key);
+  const _NutritionSection({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -177,17 +169,14 @@ class _BarcodeView extends GetView<DetailsController> {
   const _BarcodeView({Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) =>
-      (controller.marketItem.barcode.isNotEmpty)
-          ? _Barcode(barcode: controller.marketItem.barcode)
-          : const SizedBox();
+  Widget build(BuildContext context) {
+    final barcode = controller.marketItem.barcode;
+    return (barcode.isNotEmpty) ? _Barcode(barcode) : const SizedBox();
+  }
 }
 
 class _Barcode extends StatelessWidget {
-  const _Barcode({
-    Key key,
-    @required this.barcode,
-  }) : super(key: key);
+  const _Barcode([this.barcode, Key key]) : super(key: key);
 
   final String barcode;
 
@@ -195,7 +184,7 @@ class _Barcode extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        width: MediaQuery.of(context).size.width / 2,
+        width: Get.width / 2,
         child: BarcodeWidget(
           data: barcode,
           barcode: Barcode.ean13(),

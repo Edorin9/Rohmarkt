@@ -4,7 +4,7 @@ class Loader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(color: Color.fromRGBO(0, 0, 0, 0.5)),
+      decoration: const BoxDecoration(color: Colors.black45),
       child: const Center(child: CircularProgressIndicator()),
     );
   }
