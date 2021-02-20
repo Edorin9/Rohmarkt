@@ -32,6 +32,7 @@ class _SliverAppHeader extends GetView<DetailsController> {
     final _textTheme = Theme.of(context).textTheme;
     final _ = controller;
     return SliverAppBar(
+      brightness: Brightness.dark,
       backgroundColor: Colors.transparent,
       floating: true,
       flexibleSpace: FlexibleSpaceBar(

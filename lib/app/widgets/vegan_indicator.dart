@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rohmarkt/app/common/theme/color_schemes.dart';
 
 class VeganIndicator extends StatelessWidget {
   const VeganIndicator({
@@ -11,12 +12,11 @@ class VeganIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _colorScheme = Theme.of(context).colorScheme;
     return SvgPicture.asset(
       'assets/images/vegetarian.svg',
       width: 24,
       height: 24,
-      color: isVegan ? _colorScheme.secondary : Colors.grey,
+      color: isVegan ? gLightGreen : Colors.grey,
     );
   }
 }

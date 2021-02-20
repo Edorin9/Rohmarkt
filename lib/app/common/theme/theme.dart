@@ -14,17 +14,21 @@ class AppTheme {
       colorScheme: colorScheme,
       textTheme: gLatoTextTheme,
     ).copyWith(
-      appBarTheme: _appBarTheme(colorScheme.primary),
+      appBarTheme: _appBarTheme(colorScheme),
     );
   }
 
   // + AppBarTheme
 
-  static AppBarTheme _appBarTheme(Color color) {
+  static AppBarTheme _appBarTheme(ColorScheme colorScheme) {
     return AppBarTheme(
-      color: color,
+      brightness: colorScheme.brightness,
+      color: colorScheme.primary,
+      iconTheme: const IconThemeData(color: Colors.white),
       textTheme: gLatoTextTheme.copyWith(
-        headline6: gLatoTextTheme.headline6.copyWith(color: Colors.white),
+        headline6: gLatoTextTheme.headline6.copyWith(
+          color: colorScheme.onBackground,
+        ),
       ),
     );
   }

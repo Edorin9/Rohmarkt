@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 
 // + Colors
 
-const gPrimaryGreen = Colors.teal;
-const gSecondaryGreen = Colors.tealAccent;
+const gDarkGreen = Colors.teal;
+const gLightGreen = Colors.tealAccent;
 
 // + Color Schemes
 
 const ColorScheme gLightColorScheme = ColorScheme.light(
-  primary: gPrimaryGreen,
-  primaryVariant: gSecondaryGreen,
-  secondary: gSecondaryGreen,
-  secondaryVariant: gSecondaryGreen,
+  primary: gLightGreen,
+  primaryVariant: gLightGreen,
+  secondary: gDarkGreen,
+  secondaryVariant: gDarkGreen,
   background: Color(0xfffafafa),
 );
 
 const ColorScheme gDarkColorScheme = ColorScheme.dark(
-  primary: gPrimaryGreen,
-  primaryVariant: gPrimaryGreen,
-  secondary: gSecondaryGreen,
-  secondaryVariant: gSecondaryGreen,
+  primary: gDarkGreen,
+  primaryVariant: gDarkGreen,
+  secondary: gLightGreen,
+  secondaryVariant: gLightGreen,
 );
