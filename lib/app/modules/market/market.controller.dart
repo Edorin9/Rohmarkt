@@ -15,6 +15,8 @@ class MarketController extends GetxController {
 
   // + View-Model
 
+  // title
+  final title = 'Rohmarkt';
   // loader
   final _isLoading = false.obs;
   bool get isLoading => _isLoading.value;

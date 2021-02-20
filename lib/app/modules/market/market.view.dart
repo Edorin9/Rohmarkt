@@ -11,19 +11,20 @@ class MarketView extends GetView<MarketController> {
 
   @override
   Widget build(BuildContext context) {
+    final _ = controller;
     return Scaffold(
       appBar: const _AppBar(),
       body: Stack(
         children: [
           const _Body(),
-          Obx(() => controller.isLoading ? const Loader() : const SizedBox()),
+          Obx(() => _.isLoading ? const Loader() : const SizedBox()),
         ],
       ),
     );
   }
 }
 
-class _AppBar extends StatelessWidget with PreferredSizeWidget {
+class _AppBar extends GetView<MarketController> with PreferredSizeWidget {
   const _AppBar({Key key}) : super(key: key);
 
   @override
@@ -31,10 +32,10 @@ class _AppBar extends StatelessWidget with PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _ = controller;
     return AppBar(
       centerTitle: true,
-      elevation: 4,
-      title: const Text('Rohmarkt'),
+      title: Text(_.title),
     );
   }
 }
@@ -44,13 +45,14 @@ class _Body extends GetView<MarketController> {
 
   @override
   Widget build(BuildContext context) {
+    final _ = controller;
     return Obx(
       () => ListView.separated(
         padding: gInsets16,
-        itemCount: controller.items.length,
+        itemCount: _.items.length,
         itemBuilder: (context, index) => MarketItemCard(
-          item: controller.items[index],
-          onTap: () => controller.onItemClicked(controller.items[index]),
+          item: _.items[index],
+          onTap: () => _.onItemClicked(_.items[index]),
         ),
         separatorBuilder: (context, index) => const SizedBox(height: 8),
       ),

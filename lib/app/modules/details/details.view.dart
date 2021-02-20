@@ -30,23 +30,20 @@ class _SliverAppHeader extends GetView<DetailsController> {
   @override
   Widget build(BuildContext context) {
     final _textTheme = Theme.of(context).textTheme;
+    final _ = controller;
     return SliverAppBar(
       backgroundColor: Colors.transparent,
-      elevation: 4,
-      forceElevated: true,
       floating: true,
       flexibleSpace: FlexibleSpaceBar(
         centerTitle: true,
         title: Row(
           children: [
             const SizedBox(width: 16),
-            VeganIndicator(isVegan: controller.marketItem.isVegan),
+            VeganIndicator(isVegan: _.marketItem.isVegan),
             const SizedBox(width: 8),
             Text(
-              '${controller.marketItem.name} ${controller.marketItem.portionInGram}g',
-              style: _textTheme.headline5.copyWith(
-                color: Colors.white,
-              ),
+              '${_.marketItem.name} ${_.marketItem.portionInGram}g',
+              style: _textTheme.headline5.copyWith(color: Colors.white),
             ),
           ],
         ),
@@ -55,7 +52,7 @@ class _SliverAppHeader extends GetView<DetailsController> {
             color: Colors.black.withOpacity(0.63),
           ),
           child: FadeInImage.assetNetwork(
-            image: controller.marketItem.imageUrl,
+            image: _.marketItem.imageUrl,
             placeholder: 'assets/images/loader.gif',
             fit: BoxFit.cover,
           ),
@@ -93,24 +90,21 @@ class _DetailSection extends GetView<DetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    final marketItem = controller.marketItem;
+    final _ = controller;
     return Column(
       children: [
         DetailRow(
           label: 'Hersteller',
-          detail: marketItem.manufacturer,
+          detail: _.marketItem.manufacturer,
         ),
-        const SizedBox(height: 16),
         DetailRow(
           label: 'Kategorie',
-          detail: marketItem.category,
+          detail: _.marketItem.category,
         ),
-        const SizedBox(height: 16),
         DetailRow(
           label: 'Vegan',
-          detail: marketItem.isVegan ? 'Ja' : 'Nein',
+          detail: _.marketItem.isVegan ? 'Ja' : 'Nein',
         ),
-        const SizedBox(height: 16),
       ],
     );
   }
@@ -122,7 +116,7 @@ class _NutritionSection extends GetView<DetailsController> {
   @override
   Widget build(BuildContext context) {
     final _textTheme = Theme.of(context).textTheme;
-    final _marketItem = controller.marketItem;
+    final _ = controller;
     return Column(
       children: [
         Center(
@@ -134,32 +128,32 @@ class _NutritionSection extends GetView<DetailsController> {
         const SizedBox(height: 8),
         NutritionRow(
           label: 'Zucker',
-          amount: '${_marketItem.sugar}${_marketItem.unit}',
+          amount: '${_.marketItem.sugar}${_.marketItem.unit}',
         ),
         const SizedBox(height: 3),
         NutritionRow(
           label: 'Kalorien',
-          amount: '${_marketItem.calories}${_marketItem.unit}',
+          amount: '${_.marketItem.calories}${_.marketItem.unit}',
         ),
         const SizedBox(height: 3),
         NutritionRow(
           label: 'Eiweiss',
-          amount: '${_marketItem.protein}${_marketItem.unit}',
+          amount: '${_.marketItem.protein}${_.marketItem.unit}',
         ),
         const SizedBox(height: 3),
         NutritionRow(
           label: 'Kohlenhydrate',
-          amount: '${_marketItem.carbohydrates}${_marketItem.unit}',
+          amount: '${_.marketItem.carbohydrates}${_.marketItem.unit}',
         ),
         const SizedBox(height: 3),
         NutritionRow(
           label: 'Fett',
-          amount: '${_marketItem.fat}${_marketItem.unit}',
+          amount: '${_.marketItem.fat}${_.marketItem.unit}',
         ),
         const SizedBox(height: 3),
         NutritionRow(
           label: 'Wasser',
-          amount: '${_marketItem.water}${_marketItem.unit}',
+          amount: '${_.marketItem.water}${_.marketItem.unit}',
         ),
       ],
     );
@@ -171,8 +165,10 @@ class _BarcodeView extends GetView<DetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    final barcode = controller.marketItem.barcode;
-    return (barcode.isNotEmpty) ? _Barcode(barcode) : const SizedBox();
+    final _ = controller;
+    return (_.marketItem.barcode.isNotEmpty)
+        ? _Barcode(_.marketItem.barcode)
+        : const SizedBox();
   }
 }
 

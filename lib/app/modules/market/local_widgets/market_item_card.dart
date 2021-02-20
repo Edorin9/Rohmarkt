@@ -132,16 +132,12 @@ class _MainTexts extends StatelessWidget {
       children: [
         Text(
           '${item.name} ${item.portionInGram}g',
-          style: _textTheme.headline5.copyWith(
-            color: Colors.white,
-          ),
+          style: _textTheme.headline5.copyWith(color: Colors.white),
         ),
         const SizedBox(height: 4),
         Text(
           item.category,
-          style: _textTheme.caption.copyWith(
-            color: Colors.white,
-          ),
+          style: _textTheme.caption.copyWith(color: Colors.white),
         ),
       ],
     );

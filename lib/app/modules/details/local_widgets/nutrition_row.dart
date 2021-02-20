@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rohmarkt/app/common/utilities/dimensions.dart';
 
 class NutritionRow extends StatelessWidget {
   const NutritionRow({
@@ -12,12 +13,15 @@ class NutritionRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(label),
-        Text(amount),
-      ],
+    return Padding(
+      padding: gBottomInset2,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(label),
+          Text(amount),
+        ],
+      ),
     );
   }
 }
