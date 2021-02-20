@@ -49,5 +49,8 @@ class MarketController extends GetxController {
     );
     // stop load
     _isLoading.value = false;
+    // ? try change theme
+    // await Future.delayed(const Duration(seconds: 3));
+    // Get.changeThemeMode(Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
   }
 }

@@ -72,7 +72,7 @@ class _SliverContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: Container(
+      child: Padding(
         padding: gInsets16,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

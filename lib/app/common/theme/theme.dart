@@ -4,25 +4,27 @@ import 'color_schemes.dart';
 import 'text_themes.dart';
 
 class AppTheme {
-  static final ThemeData light = AppTheme.build(gLightColorScheme);
-  static final ThemeData dark = AppTheme.build(gDarkColorScheme);
+  static final ThemeData light = AppTheme._buildFrom(gLightColorScheme);
+  static final ThemeData dark = AppTheme._buildFrom(gDarkColorScheme);
 
   /// + Build Theme from [ColorScheme]
 
-  static ThemeData build(ColorScheme colorScheme) {
-    final appBarH6Style =
-        gLatoTextTheme.headline6.copyWith(color: Colors.white);
-    final appBarTextTheme = gLatoTextTheme.copyWith(headline6: appBarH6Style);
+  static ThemeData _buildFrom(ColorScheme colorScheme) {
     return ThemeData.from(
       colorScheme: colorScheme,
       textTheme: gLatoTextTheme,
     ).copyWith(
-      appBarTheme: AppBarTheme(
-        color: colorScheme.primary,
-        textTheme: appBarTextTheme,
-      ),
-      cardTheme: CardTheme(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(9)),
+      appBarTheme: _appBarTheme(colorScheme.primary),
+    );
+  }
+
+  // + AppBarTheme
+
+  static AppBarTheme _appBarTheme(Color color) {
+    return AppBarTheme(
+      color: color,
+      textTheme: gLatoTextTheme.copyWith(
+        headline6: gLatoTextTheme.headline6.copyWith(color: Colors.white),
       ),
     );
   }
