@@ -9,7 +9,7 @@ class DummyJsonProvider {
     return (jsonMap as List).map((e) => MarketItem.fromJson(e)).toList();
   }
 
-  //
+  // + Private Methods
 
   Future<dynamic> _parseJsonFromAsset(String filename) async {
     final jsonString = await _loadFromAsset('assets/dummy_data/$filename');

@@ -13,7 +13,7 @@ class MarketController extends GetxController {
     @required Repository repository,
   }) : _repository = repository;
 
-  // ! View-Model
+  // + View-Model
 
   // loader
   final _isLoading = false.obs;
@@ -22,7 +22,12 @@ class MarketController extends GetxController {
   final _items = <MarketItem>[].obs;
   List<MarketItem> get items => _items;
 
-  // ! Override Methods
+  // + Triggers
+
+  void onItemClicked(MarketItem item) =>
+      Get.toNamed(Routes.details, arguments: item);
+
+  // + Override Methods
 
   @override
   void onInit() {
@@ -31,22 +36,15 @@ class MarketController extends GetxController {
     super.onInit();
   }
 
-  // ! Public Methods
-
-  void onItemClicked(MarketItem item) =>
-      Get.toNamed(Routes.details, arguments: item);
-
-  // ! Private Methods
+  // + Private Methods
 
   Future<void> _getMarketItems() async {
-    // start load
+    // start load -- call api
     _isLoading.value = true;
-    // call api
     final marketItemsResult = await _repository.getMarketItems();
     marketItemsResult.fold(
-      // show error
+      // show error | add items
       (failure) => Get.snackbar('Error', failure.message),
-      // add items
       (marketItems) => _items.addAll(marketItems),
     );
     // stop load

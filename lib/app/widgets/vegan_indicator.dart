@@ -11,11 +11,12 @@ class VeganIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _colorScheme = Theme.of(context).colorScheme;
     return SvgPicture.asset(
       'assets/images/vegetarian.svg',
       width: 24,
       height: 24,
-      color: isVegan ? Colors.tealAccent : Colors.grey,
+      color: isVegan ? _colorScheme.secondary : Colors.grey,
     );
   }
 }

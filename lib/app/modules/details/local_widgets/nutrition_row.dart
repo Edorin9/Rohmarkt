@@ -15,14 +15,8 @@ class NutritionRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          label,
-          style: const TextStyle(fontSize: 16),
-        ),
-        Text(
-          amount,
-          style: const TextStyle(fontSize: 16),
-        ),
+        Text(label),
+        Text(amount),
       ],
     );
   }

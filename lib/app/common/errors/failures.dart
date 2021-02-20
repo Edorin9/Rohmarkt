@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-/// Repository-level failure containing [message]
+/// + Repository-level failure containing [message]
 
 abstract class Failure extends Equatable {
   final String message;
@@ -10,6 +10,8 @@ abstract class Failure extends Equatable {
   @override
   List<Object> get props => [message];
 }
+
+// + Repository-level failures
 
 class NetworkFailure extends Failure {
   static const defaultMessage = 'Network Failure';

@@ -1,5 +1,5 @@
 // import 'package:flutter/widgets.dart';
 
 // class Key {
-//   static final GlobalKey formKey = GlobalKey<FormState>();
+//   static final GlobalKey form = GlobalKey<FormState>();
 // }

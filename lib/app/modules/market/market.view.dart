@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rohmarkt/app/common/utilities/dimensions.dart';
 
 import 'local_widgets/loader.dart';
 import 'local_widgets/market_item_card.dart';
@@ -31,11 +32,9 @@ class _AppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.teal,
-      title: const Text(
-        'Rohmarkt',
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
+      centerTitle: true,
+      elevation: 4,
+      title: const Text('Rohmarkt'),
     );
   }
 }
@@ -45,19 +44,15 @@ class _Body extends GetView<MarketController> {
 
   @override
   Widget build(BuildContext context) {
-    return GlowingOverscrollIndicator(
-      axisDirection: AxisDirection.down,
-      color: Colors.tealAccent,
-      child: Obx(
-        () => ListView.separated(
-          padding: const EdgeInsets.all(16),
-          itemCount: controller.items.length,
-          itemBuilder: (context, index) => MarketItemCard(
-            item: controller.items[index],
-            onTap: () => controller.onItemClicked(controller.items[index]),
-          ),
-          separatorBuilder: (context, index) => const SizedBox(height: 8),
+    return Obx(
+      () => ListView.separated(
+        padding: gInsets16,
+        itemCount: controller.items.length,
+        itemBuilder: (context, index) => MarketItemCard(
+          item: controller.items[index],
+          onTap: () => controller.onItemClicked(controller.items[index]),
         ),
+        separatorBuilder: (context, index) => const SizedBox(height: 8),
       ),
     );
   }

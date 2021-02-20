@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rohmarkt/app/common/theme/text_themes.dart';
 
 class DetailRow extends StatelessWidget {
   const DetailRow({
@@ -12,20 +13,17 @@ class DetailRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _textTheme = Theme.of(context).textTheme;
     return Row(
       children: [
         Text(
           '$label: ',
-          style: const TextStyle(
-            color: Colors.grey,
-            fontSize: 16,
-          ),
+          style: _textTheme.bodyText2,
         ),
         Text(
           detail,
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
+          style: _textTheme.bodyText2.copyWith(
+            fontWeight: gBoldFontWeight,
           ),
         ),
       ],

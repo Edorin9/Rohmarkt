@@ -1,6 +1,7 @@
 import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rohmarkt/app/common/utilities/dimensions.dart';
 
 import '../../widgets/vegan_indicator.dart';
 import 'details.controller.dart';
@@ -28,8 +29,10 @@ class _SliverAppHeader extends GetView<DetailsController> {
 
   @override
   Widget build(BuildContext context) {
+    final _textTheme = Theme.of(context).textTheme;
     return SliverAppBar(
       backgroundColor: Colors.transparent,
+      elevation: 4,
       forceElevated: true,
       floating: true,
       flexibleSpace: FlexibleSpaceBar(
@@ -41,9 +44,8 @@ class _SliverAppHeader extends GetView<DetailsController> {
             const SizedBox(width: 8),
             Text(
               '${controller.marketItem.name} ${controller.marketItem.portionInGram}g',
-              style: const TextStyle(
+              style: _textTheme.headline5.copyWith(
                 color: Colors.white,
-                fontWeight: FontWeight.bold,
               ),
             ),
           ],
@@ -52,8 +54,9 @@ class _SliverAppHeader extends GetView<DetailsController> {
           foregroundDecoration: BoxDecoration(
             color: Colors.black.withOpacity(0.63),
           ),
-          child: Image.network(
-            controller.marketItem.imageUrl,
+          child: FadeInImage.assetNetwork(
+            image: controller.marketItem.imageUrl,
+            placeholder: 'assets/images/loader.gif',
             fit: BoxFit.cover,
           ),
         ),
@@ -70,7 +73,7 @@ class _SliverContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Container(
-        padding: const EdgeInsets.all(16),
+        padding: gInsets16,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
@@ -118,47 +121,45 @@ class _NutritionSection extends GetView<DetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    final marketItem = controller.marketItem;
+    final _textTheme = Theme.of(context).textTheme;
+    final _marketItem = controller.marketItem;
     return Column(
       children: [
-        const Center(
+        Center(
           child: Text(
             'Ernährung',
-            style: TextStyle(
-              fontSize: 21,
-              fontWeight: FontWeight.w900,
-            ),
+            style: _textTheme.headline6,
           ),
         ),
         const SizedBox(height: 8),
         NutritionRow(
           label: 'Zucker',
-          amount: '${marketItem.sugar}${marketItem.unit}',
+          amount: '${_marketItem.sugar}${_marketItem.unit}',
         ),
         const SizedBox(height: 3),
         NutritionRow(
           label: 'Kalorien',
-          amount: '${marketItem.calories}${marketItem.unit}',
+          amount: '${_marketItem.calories}${_marketItem.unit}',
         ),
         const SizedBox(height: 3),
         NutritionRow(
           label: 'Eiweiss',
-          amount: '${marketItem.protein}${marketItem.unit}',
+          amount: '${_marketItem.protein}${_marketItem.unit}',
         ),
         const SizedBox(height: 3),
         NutritionRow(
           label: 'Kohlenhydrate',
-          amount: '${marketItem.carbohydrates}${marketItem.unit}',
+          amount: '${_marketItem.carbohydrates}${_marketItem.unit}',
         ),
         const SizedBox(height: 3),
         NutritionRow(
           label: 'Fett',
-          amount: '${marketItem.fat}${marketItem.unit}',
+          amount: '${_marketItem.fat}${_marketItem.unit}',
         ),
         const SizedBox(height: 3),
         NutritionRow(
           label: 'Wasser',
-          amount: '${marketItem.water}${marketItem.unit}',
+          amount: '${_marketItem.water}${_marketItem.unit}',
         ),
       ],
     );
@@ -182,12 +183,14 @@ class _Barcode extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _colorScheme = Theme.of(context).colorScheme;
     return Center(
       child: SizedBox(
         width: Get.width / 2,
         child: BarcodeWidget(
           data: barcode,
           barcode: Barcode.ean13(),
+          color: _colorScheme.onBackground,
         ),
       ),
     );

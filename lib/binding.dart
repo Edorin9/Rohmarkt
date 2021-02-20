@@ -9,7 +9,7 @@ import 'app/data/sources/dreamshape_api.dart';
 class AppBinding extends Bindings {
   @override
   void dependencies() {
-    // Repository
+    // + Repository
     Get.lazyPut<Repository>(
       () => Repository(
         api: Get.find(),
@@ -17,19 +17,19 @@ class AppBinding extends Bindings {
         networkInfo: Get.find(),
       ),
     );
-    // DreamShapeApi
+    // + DreamShapeApi
     Get.lazyPut<DreamShapeApi>(
       () => DreamShapeApi(),
     );
-    // NetworkInfo
+    // + NetworkInfo
     Get.lazyPut<NetworkInfo>(
       () => NetworkInfo(dataConnectionChecker: Get.find()),
     );
-    // DataConnectionChecker
+    // + DataConnectionChecker
     Get.lazyPut<DataConnectionChecker>(
       () => DataConnectionChecker(),
     );
-    // DummyJsonProvider
+    // + DummyJsonProvider
     Get.lazyPut<DummyJsonProvider>(
       () => DummyJsonProvider(),
     );
