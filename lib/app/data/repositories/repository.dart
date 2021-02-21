@@ -2,11 +2,11 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:rohmarkt/app/data/sources/dummy_json_provider.dart';
 
-import '../common/errors/exceptions.dart';
-import '../common/errors/failures.dart';
-import 'models/market_item.dart';
-import 'services/network_info.dart';
-import 'sources/dreamshape_api.dart';
+import '../../common/errors/exceptions.dart';
+import '../../common/errors/failures.dart';
+import '../models/market_item.dart';
+import '../services/network_info.dart';
+import '../sources/dreamshape_api.dart';
 
 class Repository {
   static const fallbackProviderEnabled = true;

@@ -3,50 +3,33 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'app/common/theme/theme.dart';
-import 'app/data/repository.dart';
 import 'app/data/services/network_info.dart';
 import 'app/data/sources/dreamshape_api.dart';
 import 'app/data/sources/dummy_json_provider.dart';
 import 'app/routes/pages.dart';
 
-void main() => runApp(App());
+void main() => runApp(Rohmarkt());
 
-/// + App
-class App extends GetMaterialApp {
-  @override
-  bool get debugShowCheckedModeBanner => false;
+/// + Rohmarkt
 
-  @override
-  ThemeMode get themeMode => ThemeMode.light;
-
-  @override
-  ThemeData get theme => AppTheme.light;
-
-  @override
-  ThemeData get darkTheme => AppTheme.dark;
-
-  @override
-  Bindings get initialBinding => InitialBinding();
-
-  @override
-  String get initialRoute => Routes.market;
-
-  @override
-  List<GetPage> get getPages => Pages.routes;
+class Rohmarkt extends GetMaterialApp {
+  Rohmarkt()
+      : super(
+          debugShowCheckedModeBanner: false,
+          themeMode: ThemeMode.light,
+          theme: AppTheme.light,
+          darkTheme: AppTheme.dark,
+          initialBinding: InitialBinding(),
+          initialRoute: Routes.market,
+          getPages: Pages.routes,
+        );
 }
 
 /// + Initial Binding
+
 class InitialBinding extends Bindings {
   @override
   void dependencies() {
-    // + Repository
-    Get.lazyPut<Repository>(
-      () => Repository(
-        api: Get.find(),
-        dummyProvider: Get.find(),
-        networkInfo: Get.find(),
-      ),
-    );
     // + DreamShapeApi
     Get.lazyPut<DreamShapeApi>(
       () => DreamShapeApi(),

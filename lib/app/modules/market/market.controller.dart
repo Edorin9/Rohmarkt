@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:meta/meta.dart';
 
 import '../../data/models/market_item.dart';
-import '../../data/repository.dart';
+import '../../data/repositories/repository.dart';
 import '../../routes/pages.dart';
 
 class MarketController extends GetxController {
@@ -15,8 +15,6 @@ class MarketController extends GetxController {
 
   // + View-Model
 
-  // title
-  final title = 'Rohmarkt';
   // loader
   final _isLoading = false.obs;
   bool get isLoading => _isLoading.value;
@@ -29,7 +27,7 @@ class MarketController extends GetxController {
   void onItemClicked(MarketItem item) =>
       Get.toNamed(Routes.details, arguments: item);
 
-  // + Override Methods
+  // + Overrides
 
   @override
   void onInit() {
@@ -38,21 +36,18 @@ class MarketController extends GetxController {
     super.onInit();
   }
 
-  // + Private Methods
+  // + Private
 
   Future<void> _getMarketItems() async {
     // start load -- call api
     _isLoading.value = true;
     final marketItemsResult = await _repository.getMarketItems();
+    // show error | add items
     marketItemsResult.fold(
-      // show error | add items
       (failure) => Get.snackbar('Error', failure.message),
       (marketItems) => _items.addAll(marketItems),
     );
     // stop load
     _isLoading.value = false;
-    // ? try change theme
-    // await Future.delayed(const Duration(seconds: 3));
-    // Get.changeThemeMode(Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
   }
 }

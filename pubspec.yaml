@@ -32,6 +32,8 @@ dependencies:
   get: 3.24.0
   google_fonts: ^1.1.2
   mask_text_input_formatter: ^1.2.1
+  simple_animations: ^2.5.1
+  supercharged: ^1.12.0
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-/// + Repository-level failure containing [message]
+/// + Repository-level failure that contains a [message]
 
 abstract class Failure extends Equatable {
   final String message;
