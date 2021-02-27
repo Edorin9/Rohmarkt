@@ -25,7 +25,6 @@ class Rohmarkt extends GetMaterialApp {
           initialBinding: _InitialBinding(),
           initialRoute: Routes.market,
           getPages: Pages.routes,
-          defaultTransition: Transition.zoom,
         );
 }
 
