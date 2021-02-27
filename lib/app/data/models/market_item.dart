@@ -36,20 +36,20 @@ class MarketItem extends Equatable {
   });
 
   factory MarketItem.fromJson(dynamic json) => MarketItem(
-        id: (json['id'] as num) as int,
+        id: json['id'] as int,
         name: json['Bezeichnung'] as String,
         manufacturer: json['Hersteller'] as String,
         category: json['Kategorie'] as String,
         imageUrl: json['BildUrl'] as String,
         barcode: json['Barcode'] as String,
-        portionInGram: (json['PortionInGramm'] as num) as int,
+        portionInGram: json['PortionInGramm'] as int,
         unit: json['Einheit'] as String,
-        sugar: (json['Zucker'] as num) as int,
-        calories: (json['Kalorien'] as num) as int,
-        protein: (json['Eiweiss'] as num) as int,
-        carbohydrates: (json['Kohlenhydrate'] as num) as int,
-        fat: (json['Fett'] as num) as int,
-        water: (json['Wasser'] as num) as int,
+        sugar: json['Zucker'] as int,
+        calories: json['Kalorien'] as int,
+        protein: json['Eiweiss'] as int,
+        carbohydrates: json['Kohlenhydrate'] as int,
+        fat: json['Fett'] as int,
+        water: json['Wasser'] as int,
         isVegan: json['Vegan'] as bool,
       );
 

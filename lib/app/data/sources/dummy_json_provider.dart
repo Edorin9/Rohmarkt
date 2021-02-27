@@ -1,7 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:rohmarkt/app/data/models/market_item.dart';
+
+import '../models/market_item.dart';
 
 class DummyJsonProvider {
   // + Public

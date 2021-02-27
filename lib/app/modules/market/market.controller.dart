@@ -13,7 +13,7 @@ class MarketController extends GetxController {
     @required Repository repository,
   }) : _repository = repository;
 
-  // + View-Model
+  // + Properties
 
   // loader
   final _isLoading = false.obs;
@@ -30,10 +30,9 @@ class MarketController extends GetxController {
   // + Overrides
 
   @override
-  void onInit() {
-    // load items
+  void onReady() {
     _getMarketItems();
-    super.onInit();
+    super.onReady();
   }
 
   // + Private

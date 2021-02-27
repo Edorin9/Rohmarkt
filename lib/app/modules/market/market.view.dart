@@ -6,20 +6,14 @@ import 'local_widgets/loader.dart';
 import 'local_widgets/market_item_card.dart';
 import 'market.controller.dart';
 
-class MarketView extends GetView<MarketController> {
+class MarketView extends StatelessWidget {
   const MarketView({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _ = controller;
     return Scaffold(
       appBar: _AppBar(),
-      body: Stack(
-        children: [
-          const _Body(),
-          Obx(() => _.isLoading ? const Loader() : const SizedBox()),
-        ],
-      ),
+      body: const _Body(),
     );
   }
 }
@@ -33,7 +27,24 @@ class _AppBar extends AppBar {
 }
 
 class _Body extends GetView<MarketController> {
-  const _Body({Key key}) : super(key: key);
+  const _Body({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final _ = controller;
+    return Stack(
+      children: [
+        const _List(),
+        Obx(() => _.isLoading ? const Loader() : const SizedBox()),
+      ],
+    );
+  }
+}
+
+class _List extends GetView<MarketController> {
+  const _List({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +52,7 @@ class _Body extends GetView<MarketController> {
     return Obx(
       () => AnimatedOpacity(
         opacity: _.isLoading ? 0 : 1,
-        duration: const Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 450),
         curve: Curves.easeIn,
         child: ListView.separated(
           padding: gInsets16,
