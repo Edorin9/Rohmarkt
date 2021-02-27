@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rohmarkt/app/common/utilities/dimensions.dart';
+
+import '../../../common/utilities/dimensions.dart';
 
 class NutritionRow extends StatelessWidget {
   const NutritionRow({

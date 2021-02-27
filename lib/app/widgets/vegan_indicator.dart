@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rohmarkt/app/common/theme/color_schemes.dart';
+
+import '../common/theme/color_schemes.dart';
 
 class VeganIndicator extends StatelessWidget {
   const VeganIndicator({

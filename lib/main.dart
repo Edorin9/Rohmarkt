@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'app/common/theme/theme.dart';
 import 'app/data/services/network_info.dart';
 import 'app/data/sources/dreamshape_api.dart';
-import 'app/data/sources/dummy_json_provider.dart';
+import 'app/data/sources/json_provider.dart';
 import 'app/routes/pages.dart';
 
 void main() {
@@ -46,8 +46,8 @@ class _InitialBinding extends Bindings {
       () => DataConnectionChecker(),
     );
     // + DummyJsonProvider
-    Get.lazyPut<DummyJsonProvider>(
-      () => DummyJsonProvider(),
+    Get.lazyPut<JsonProvider>(
+      () => JsonProvider(),
     );
   }
 }

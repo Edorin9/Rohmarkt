@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rohmarkt/app/common/utilities/dimensions.dart';
 
-import 'local_widgets/loader.dart';
-import 'local_widgets/market_item_card.dart';
+import '../../common/utilities/dimensions.dart';
+import '_widgets/_widgets.dart';
 import 'market.controller.dart';
 
 class MarketView extends StatelessWidget {

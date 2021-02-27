@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rohmarkt/app/common/theme/text_themes.dart';
-import 'package:rohmarkt/app/common/utilities/dimensions.dart';
+
+import '../../../common/theme/text_themes.dart';
+import '../../../common/utilities/dimensions.dart';
 
 class DetailRow extends StatelessWidget {
   const DetailRow({

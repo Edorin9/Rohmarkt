@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rohmarkt/app/common/utilities/dimensions.dart';
 
+import '../../../common/utilities/dimensions.dart';
 import '../../../data/models/market_item.dart';
 import '../../../widgets/vegan_indicator.dart';
 

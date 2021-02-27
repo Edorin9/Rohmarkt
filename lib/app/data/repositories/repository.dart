@@ -1,23 +1,23 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/foundation.dart';
-import 'package:rohmarkt/app/data/sources/dummy_json_provider.dart';
+import 'package:meta/meta.dart';
 
 import '../../common/errors/exceptions.dart';
 import '../../common/errors/failures.dart';
 import '../models/market_item.dart';
 import '../services/network_info.dart';
 import '../sources/dreamshape_api.dart';
+import '../sources/json_provider.dart';
 
 class Repository {
   static const fallbackProviderEnabled = true;
 
   final DreamShapeApi _api;
-  final DummyJsonProvider _dummyProvider;
+  final JsonProvider _dummyProvider;
   final NetworkInfo _networkInfo;
 
   Repository({
     @required DreamShapeApi api,
-    @required DummyJsonProvider dummyProvider,
+    @required JsonProvider dummyProvider,
     @required NetworkInfo networkInfo,
   })  : _api = api,
         _dummyProvider = dummyProvider,
@@ -30,7 +30,7 @@ class Repository {
         return Right(marketItems);
       } on NetworkException catch (e) {
         return fallbackProviderEnabled
-            ? Right(await _dummyProvider.getMarketItems())
+            ? Right(await _dummyProvider.marketItems)
             : Left(NetworkFailure(e.message));
       }
     } else {
