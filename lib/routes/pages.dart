@@ -1,7 +1,7 @@
 import 'package:get/get_navigation/get_navigation.dart';
 
-import '../modules/details/details.barrel.dart';
-import '../modules/market/market.barrel.dart';
+import '../pages/details/details.barrel.dart';
+import '../pages/market/market.barrel.dart';
 
 part 'routes.dart';
 
