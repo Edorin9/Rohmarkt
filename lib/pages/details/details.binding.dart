@@ -5,7 +5,7 @@ import 'details.viewmodel.dart';
 class DetailsBinding extends Bindings {
   @override
   void dependencies() {
-    // DetailsViewModel
+    // + DetailsViewModel
     Get.lazyPut<DetailsViewModel>(() => DetailsViewModel());
   }
 }
