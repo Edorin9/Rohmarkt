@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../common/mvvm/getx_view.dart';
 import '../../common/utilities/dimensions.dart';
 import '_widgets/_widgets.dart';
-import 'market.controller.dart';
+import 'market.viewmodel.dart';
 
 class MarketView extends StatelessWidget {
   const MarketView({Key key}) : super(key: key);
@@ -25,33 +26,33 @@ class _AppBar extends AppBar {
         );
 }
 
-class _Body extends GetView<MarketController> {
+class _Body extends GetxView<MarketViewModel> {
   const _Body({
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _ = controller;
+    final _ = viewModel;
     return Stack(
       children: [
         const _List(),
-        Obx(() => _.isLoading ? const Loader() : const SizedBox()),
+        Obx(() => Loader(isShown: _.isLoading)),
       ],
     );
   }
 }
 
-class _List extends GetView<MarketController> {
+class _List extends GetxView<MarketViewModel> {
   const _List({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _ = controller;
+    final _ = viewModel;
     return Obx(
       () => AnimatedOpacity(
         opacity: _.isLoading ? 0 : 1,
-        duration: const Duration(milliseconds: 450),
+        duration: 360.milliseconds,
         curve: Curves.easeIn,
         child: ListView.separated(
           padding: gInsets16,

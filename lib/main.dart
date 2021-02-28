@@ -1,12 +1,11 @@
-import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'app/common/theme/theme.dart';
-import 'app/data/services/network_info.dart';
-import 'app/data/sources/dreamshape_api.dart';
-import 'app/data/sources/json_provider.dart';
-import 'app/routes/pages.dart';
+import 'common/theme/theme.dart';
+import 'data/services/connection_checker.dart';
+import 'data/sources/dreamshape_api.dart';
+import 'data/sources/json_provider.dart';
+import 'routes/pages.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,21 +32,17 @@ class Rohmarkt extends GetMaterialApp {
 class _InitialBinding extends Bindings {
   @override
   void dependencies() {
+    // + ConnectionChecker
+    Get.lazyPut<ConnectionChecker>(
+      () => ConnectionChecker(),
+    );
+    // + JsonProvider
+    Get.lazyPut<JsonProvider>(
+      () => JsonProvider(),
+    );
     // + DreamShapeApi
     Get.lazyPut<DreamShapeApi>(
       () => DreamShapeApi(),
-    );
-    // + NetworkInfo
-    Get.lazyPut<NetworkInfo>(
-      () => NetworkInfo(dataConnectionChecker: Get.find()),
-    );
-    // + DataConnectionChecker
-    Get.lazyPut<DataConnectionChecker>(
-      () => DataConnectionChecker(),
-    );
-    // + DummyJsonProvider
-    Get.lazyPut<JsonProvider>(
-      () => JsonProvider(),
     );
   }
 }

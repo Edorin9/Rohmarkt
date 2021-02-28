@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:meta/meta.dart';
 
+import '../../common/mvvm/getx_viewmodel.dart';
+import '../../common/utilities/helpers.dart';
 import '../../data/models/market_item.dart';
 import '../../data/repositories/repository.dart';
 import '../../routes/pages.dart';
 
-class MarketController extends GetxController {
+class MarketViewModel extends GetxViewModel {
   final Repository _repository;
 
-  MarketController({
+  MarketViewModel({
     @required Repository repository,
   }) : _repository = repository;
 
@@ -22,7 +24,7 @@ class MarketController extends GetxController {
   final _items = <MarketItem>[].obs;
   List<MarketItem> get items => _items;
 
-  // + Triggers
+  // + Events
 
   void onItemClicked(MarketItem item) =>
       Get.toNamed(Routes.details, arguments: item);
@@ -41,12 +43,15 @@ class MarketController extends GetxController {
     // start load -- call api
     _isLoading.value = true;
     final marketItemsResult = await _repository.getMarketItems();
-    // show error | add items
+    // failure | success
     marketItemsResult.fold(
-      (failure) => Get.snackbar('Error', failure.message),
+      (failure) => showSnackbar(
+        type: SnackbarType.error,
+        message: failure.message,
+      ),
       (marketItems) => _items.addAll(marketItems),
     );
-    // stop load
+    // end load
     _isLoading.value = false;
   }
 }

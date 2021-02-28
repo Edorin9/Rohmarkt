@@ -7,12 +7,12 @@ import '../models/market_item.dart';
 class JsonProvider {
   // + Public
 
-  Future<List<MarketItem>> get marketItems async {
+  Future<List<MarketItem>> getMarketItems() async {
     final jsonMap = await _parseJsonFromAsset('market_items.json');
     return (jsonMap as List).map((e) => MarketItem.fromJson(e)).toList();
   }
 
-  // + Private.
+  // + Private
 
   Future<dynamic> _parseJsonFromAsset(String filename) async {
     final jsonString = await rootBundle.loadString('assets/json/$filename');

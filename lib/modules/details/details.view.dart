@@ -2,12 +2,13 @@ import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../common/mvvm/getx_view.dart';
 import '../../common/utilities/dimensions.dart';
 import '../../widgets/vegan_indicator.dart';
 import '_widgets/_widgets.dart';
-import 'details.controller.dart';
+import 'details.viewmodel.dart';
 
-class DetailsView extends GetView<DetailsController> {
+class DetailsView extends GetxView<DetailsViewModel> {
   const DetailsView({Key key}) : super(key: key);
 
   @override
@@ -23,29 +24,30 @@ class DetailsView extends GetView<DetailsController> {
   }
 }
 
-class _SliverAppHeader extends GetView<DetailsController> {
+class _SliverAppHeader extends GetxView<DetailsViewModel> {
   const _SliverAppHeader({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final _textTheme = Theme.of(context).textTheme;
-    final _ = controller;
+    final _ = viewModel;
     return SliverAppBar(
       brightness: Brightness.dark,
       backgroundColor: Colors.transparent,
       floating: true,
       flexibleSpace: FlexibleSpaceBar(
-        centerTitle: true,
-        title: Row(
-          children: [
-            const SizedBox(width: 16),
-            VeganIndicator(isVegan: _.marketItem.isVegan),
-            const SizedBox(width: 8),
-            Text(
-              '${_.marketItem.name} ${_.marketItem.portionInGram}g',
-              style: _textTheme.headline5.copyWith(color: Colors.white),
-            ),
-          ],
+        titlePadding: gInsets16,
+        title: FittedBox(
+          child: Row(
+            children: [
+              VeganIndicator(isVegan: _.marketItem.isVegan),
+              const SizedBox(width: 8),
+              Text(
+                '${_.marketItem.name} ${_.marketItem.portionInGram}g',
+                style: _textTheme.headline5.copyWith(color: Colors.white),
+              ),
+            ],
+          ),
         ),
         background: Container(
           foregroundDecoration: BoxDecoration(
@@ -85,12 +87,12 @@ class _SliverContent extends StatelessWidget {
   }
 }
 
-class _DetailSection extends GetView<DetailsController> {
+class _DetailSection extends GetxView<DetailsViewModel> {
   const _DetailSection({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _ = controller;
+    final _ = viewModel;
     return Column(
       children: [
         DetailRow(
@@ -110,13 +112,13 @@ class _DetailSection extends GetView<DetailsController> {
   }
 }
 
-class _NutritionSection extends GetView<DetailsController> {
+class _NutritionSection extends GetxView<DetailsViewModel> {
   const _NutritionSection({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final _textTheme = Theme.of(context).textTheme;
-    final _ = controller;
+    final _ = viewModel;
     return Column(
       children: [
         Center(
@@ -160,12 +162,12 @@ class _NutritionSection extends GetView<DetailsController> {
   }
 }
 
-class _BarcodeView extends GetView<DetailsController> {
+class _BarcodeView extends GetxView<DetailsViewModel> {
   const _BarcodeView({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _ = controller;
+    final _ = viewModel;
     return (_.marketItem.barcode.isNotEmpty)
         ? _Barcode(_.marketItem.barcode)
         : const SizedBox();
