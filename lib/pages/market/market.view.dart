@@ -21,6 +21,7 @@ class MarketView extends StatelessWidget {
 class _AppBar extends AppBar {
   _AppBar()
       : super(
+          brightness: Brightness.dark,
           centerTitle: true,
           title: const Text('Rohmarkt'),
         );

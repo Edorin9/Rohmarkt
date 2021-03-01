@@ -27,7 +27,7 @@ class AppTheme {
       iconTheme: const IconThemeData(color: Colors.white),
       textTheme: gLatoTextTheme.copyWith(
         headline6: gLatoTextTheme.headline6.copyWith(
-          color: colorScheme.onBackground,
+          color: colorScheme.onPrimary,
         ),
       ),
     );
