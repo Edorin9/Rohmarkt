@@ -5,7 +5,7 @@ import 'package:get/route_manager.dart';
 
 void showSnackbar({
   @required String message,
-  SnackbarType type,
+  SnackbarType type = SnackbarType.neutral,
 }) {
   Get.rawSnackbar(
     backgroundColor: type.color,
@@ -16,18 +16,13 @@ void showSnackbar({
 enum SnackbarType { neutral, info, success, error, warning }
 
 extension SnackbarTypeExt on SnackbarType {
-  Color get color {
-    switch (this) {
-      case SnackbarType.info:
-        return const Color(0xff8bc34a);
-      case SnackbarType.success:
-        return const Color(0xff2196f3);
-      case SnackbarType.error:
-        return const Color(0xfff44336);
-      case SnackbarType.warning:
-        return const Color(0xffffc107);
-      default:
-        return const Color(0xFF303030);
-    }
-  }
+  static const colors = {
+    SnackbarType.neutral: Color(0xFF303030),
+    SnackbarType.info: Color(0xff2196f3),
+    SnackbarType.success: Color(0xff8bc34a),
+    SnackbarType.error: Color(0xfff44336),
+    SnackbarType.warning: Color(0xffffc107),
+  };
+
+  Color get color => colors[this];
 }
