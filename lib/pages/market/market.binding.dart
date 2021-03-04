@@ -15,7 +15,7 @@ class MarketBinding extends Bindings {
       () => Repository(
         api: Get.find(),
         dummyProvider: Get.find(),
-        connectionService: Get.find(),
+        connectionChecker: Get.find(),
       ),
     );
   }

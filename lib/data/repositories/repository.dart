@@ -1,4 +1,4 @@
-import 'package:dartz/dartz.dart';
+import 'package:either_option/either_option.dart';
 import 'package:meta/meta.dart';
 import 'package:supercharged/supercharged.dart';
 
@@ -14,28 +14,29 @@ class Repository {
 
   final DreamShapeApi _api;
   final JsonProvider _dummyProvider;
-  final ConnectionChecker _connectionService;
+  final ConnectionChecker _connectionChecker;
 
   Repository({
     @required DreamShapeApi api,
     @required JsonProvider dummyProvider,
-    @required ConnectionChecker connectionService,
+    @required ConnectionChecker connectionChecker,
   })  : _api = api,
         _dummyProvider = dummyProvider,
-        _connectionService = connectionService;
+        _connectionChecker = connectionChecker;
 
   Future<Either<Failure, List<MarketItem>>> getMarketItems() {
-    return _connectionService.handleNetworkJob(() async {
+    return _connectionChecker.handleNetworkJob(() async {
       try {
         final marketItems = await _api.getMarketItems();
         return Right(marketItems);
       } on NetworkException catch (e) {
         if (fallbackAllowed) {
-          await Future.delayed(3.seconds);
+          await Future.delayed(1.seconds);
           final fallbackMarketItems = await _dummyProvider.getMarketItems();
           return Right(fallbackMarketItems);
         } else {
-          return Left(NetworkFailure(e.message));
+          final failure = NetworkFailure(e.message);
+          return Left(failure);
         }
       }
     });

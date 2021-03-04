@@ -1,5 +1,5 @@
-import 'package:dartz/dartz.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
+import 'package:either_option/either_option.dart';
 
 import '../../common/errors/failures.dart';
 
@@ -16,7 +16,8 @@ class ConnectionChecker {
     if (await isConnected) {
       return executeJob();
     } else {
-      return const Left(ConnectionFailure('Please connect to the internet'));
+      const failure = ConnectionFailure('Please connect to the internet');
+      return Left(failure);
     }
   }
 }

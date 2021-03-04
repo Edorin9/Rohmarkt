@@ -33,13 +33,6 @@ class MarketViewModel extends GetxViewModel {
   @override
   void onReady() {
     _getMarketItems();
-    showSnackbar(
-      message: '''
-      If you’ve been waitin' for fallin' in love
-      Babe, you don’t have to wait on me
-      'Cause I've been aimin' for Heaven above
-      But an angel ain't what I need''',
-    );
     super.onReady();
   }
 
