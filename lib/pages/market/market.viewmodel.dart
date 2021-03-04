@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:meta/meta.dart';
 
@@ -34,6 +33,13 @@ class MarketViewModel extends GetxViewModel {
   @override
   void onReady() {
     _getMarketItems();
+    showSnackbar(
+      message: '''
+      If you’ve been waitin' for fallin' in love
+      Babe, you don’t have to wait on me
+      'Cause I've been aimin' for Heaven above
+      But an angel ain't what I need''',
+    );
     super.onReady();
   }
 
@@ -43,11 +49,11 @@ class MarketViewModel extends GetxViewModel {
     // start load -- call api
     _isLoading.value = true;
     final marketItemsResult = await _repository.getMarketItems();
-    // failure | success
+    // result -> failure | success
     marketItemsResult.fold(
       (failure) => showSnackbar(
-        type: SnackbarType.error,
         message: failure.message,
+        type: SnackbarType.error,
       ),
       (marketItems) => _items.addAll(marketItems),
     );
