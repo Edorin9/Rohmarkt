@@ -19,6 +19,6 @@ samples, guidance on mobile development, and a full API reference.
 
 I suggest to create a new flutter project and transfer/copy the following files or code:
 
-- **dependencies** and **dev dependencies** section in **pubspec.yaml**. *(not the whole file)*
-- **analysis_options.yaml** file.
-- the whole **lib** folder.
+- **dependencies** and **dev dependencies** section in **pubspec.yaml** *(not the whole file)*
+- **analysis_options.yaml** file
+- the whole **lib** folder
