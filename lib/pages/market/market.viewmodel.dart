@@ -47,6 +47,7 @@ class MarketViewModel extends GetxViewModel {
       (failure) => showSnackbar(
         message: failure.message,
         type: SnackbarType.error,
+        duration: 15.seconds,
       ),
       (marketItems) => _items.addAll(marketItems),
     );

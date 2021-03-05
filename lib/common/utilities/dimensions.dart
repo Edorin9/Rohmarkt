@@ -7,6 +7,7 @@ const gBottomInset16 = EdgeInsets.only(bottom: 16);
 
 // + All Edges Insets
 
+const gInsets0 = EdgeInsets.all(0);
 const gInsets2 = EdgeInsets.all(2);
 const gInsets4 = EdgeInsets.all(4);
 const gInsets8 = EdgeInsets.all(8);
