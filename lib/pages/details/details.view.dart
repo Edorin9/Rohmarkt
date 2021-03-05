@@ -33,9 +33,11 @@ class _SliverAppHeader extends GetxView<DetailsViewModel> {
     final _ = viewModel;
     return SliverAppBar(
       brightness: Brightness.dark,
-      backgroundColor: Colors.transparent,
       floating: true,
+      pinned: true,
+      snap: true,
       flexibleSpace: FlexibleSpaceBar(
+        centerTitle: true,
         titlePadding: gInsets16,
         title: FittedBox(
           child: Row(
@@ -79,7 +81,8 @@ class _SliverContent extends StatelessWidget {
             _DetailSection(),
             _NutritionSection(),
             SizedBox(height: 16),
-            _BarcodeView()
+            _BarcodeView(),
+            SizedBox(height: 900),
           ],
         ),
       ),
