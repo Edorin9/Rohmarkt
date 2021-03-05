@@ -82,7 +82,7 @@ class _SliverContent extends StatelessWidget {
             _NutritionSection(),
             SizedBox(height: 16),
             _BarcodeView(),
-            SizedBox(height: 900),
+            SizedBox(height: 180),
           ],
         ),
       ),
