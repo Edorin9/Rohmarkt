@@ -44,10 +44,9 @@ class MarketViewModel extends GetxViewModel {
     final marketItemsResult = await _repository.getMarketItems();
     // result -> failure | success
     marketItemsResult.fold(
-      (failure) => showSnackbar(
+      (failure) => showBrightSnackbar(
         message: failure.message,
         type: SnackbarType.error,
-        duration: 15.seconds,
       ),
       (marketItems) => _items.addAll(marketItems),
     );

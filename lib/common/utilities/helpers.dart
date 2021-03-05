@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:rohmarkt/common/utilities/dimensions.dart';
 
 // + SnackBar
 
@@ -10,23 +9,8 @@ void showSnackbar({
   Duration duration = const Duration(seconds: 3),
 }) {
   Get.rawSnackbar(
-    padding: gInsets0,
-    messageText: Column(
-      children: [
-        if (type != SnackbarType.neutral)
-          Container(
-            color: type.color,
-            width: double.infinity,
-            height: 4,
-          )
-        else
-          const SizedBox(),
-        Padding(
-          padding: gInsets20,
-          child: Text(message),
-        ),
-      ],
-    ),
+    leftBarIndicatorColor: type.color,
+    message: message,
     duration: duration,
   );
 }
