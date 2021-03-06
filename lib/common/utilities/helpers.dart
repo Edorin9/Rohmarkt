@@ -6,23 +6,15 @@ import 'package:get/route_manager.dart';
 void showSnackbar({
   @required String message,
   SnackbarType type = SnackbarType.neutral,
+  Brightness brightness = Brightness.light,
   Duration duration = const Duration(seconds: 3),
 }) {
   Get.rawSnackbar(
-    leftBarIndicatorColor: type.color,
     message: message,
-    duration: duration,
-  );
-}
-
-void showBrightSnackbar({
-  @required String message,
-  SnackbarType type = SnackbarType.neutral,
-  Duration duration = const Duration(seconds: 3),
-}) {
-  Get.rawSnackbar(
-    backgroundColor: type.color,
-    messageText: Text(message),
+    leftBarIndicatorColor: (brightness == Brightness.dark) ? type.color : null,
+    backgroundColor: (brightness == Brightness.light)
+        ? type.color
+        : SnackbarType.neutral.color,
     duration: duration,
   );
 }

@@ -82,7 +82,6 @@ class _SliverContent extends StatelessWidget {
             _NutritionSection(),
             SizedBox(height: 16),
             _BarcodeView(),
-            SizedBox(height: 180),
           ],
         ),
       ),
@@ -172,8 +171,13 @@ class _BarcodeView extends GetxView<DetailsViewModel> {
   Widget build(BuildContext context) {
     final _ = viewModel;
     return (_.marketItem.barcode.isNotEmpty)
-        ? _Barcode(_.marketItem.barcode)
-        : const SizedBox();
+        ? Column(
+            children: [
+              _Barcode(_.marketItem.barcode),
+              SizedBox(height: Get.height / 2),
+            ],
+          )
+        : SizedBox(height: Get.height / 2);
   }
 }
 
