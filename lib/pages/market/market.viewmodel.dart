@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:meta/meta.dart';
 
 import '../../common/mvvm/getx_viewmodel.dart';
 import '../../common/utilities/helpers.dart';
@@ -11,14 +10,14 @@ class MarketViewModel extends GetxViewModel {
   final Repository _repository;
 
   MarketViewModel({
-    @required Repository repository,
+    required Repository repository,
   }) : _repository = repository;
 
   // + Properties
 
   // loader
   final _isLoading = false.obs;
-  bool get isLoading => _isLoading.value;
+  bool get isLoading => _isLoading.value ?? false;
   // list
   final _items = <MarketItem>[].obs;
   List<MarketItem> get items => _items;

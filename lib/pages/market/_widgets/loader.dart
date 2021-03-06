@@ -5,9 +5,8 @@ import 'package:supercharged/supercharged.dart';
 
 class Loader extends StatelessWidget {
   const Loader({
-    Key key,
-    this.isShown,
-  }) : super(key: key);
+    required this.isShown,
+  });
 
   final bool isShown;
 
@@ -21,7 +20,7 @@ class Loader extends StatelessWidget {
           curve: Curves.easeIn,
           onEnd: () => isVisible.value = isShown,
           child: Visibility(
-            visible: isVisible.value,
+            visible: isVisible.value ?? false,
             child: const CircularProgressIndicator(),
           ),
         ),

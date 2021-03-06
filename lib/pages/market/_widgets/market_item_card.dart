@@ -6,10 +6,9 @@ import '../../../widgets/vegan_indicator.dart';
 
 class MarketItemCard extends StatelessWidget {
   const MarketItemCard({
-    Key key,
-    this.item,
-    this.onTap,
-  }) : super(key: key);
+    required this.item,
+    required this.onTap,
+  });
 
   final MarketItem item;
   final Function() onTap;
@@ -25,10 +24,9 @@ class MarketItemCard extends StatelessWidget {
 
 class _ItemContent extends StatelessWidget {
   const _ItemContent({
-    Key key,
-    @required this.item,
-    @required this.onTap,
-  }) : super(key: key);
+    required this.item,
+    required this.onTap,
+  });
 
   final MarketItem item;
   final Function() onTap;
@@ -40,7 +38,7 @@ class _ItemContent extends StatelessWidget {
       width: double.infinity,
       child: Stack(
         children: [
-          _BackgroundImage(imageUrl: item.imageUrl),
+          _BackgroundImage(imageUrl: item.imageUrl ?? gFallbackImage),
           const _BackgroundDim(),
           _ForegroundContent(item: item, onTap: onTap),
         ],
@@ -49,11 +47,13 @@ class _ItemContent extends StatelessWidget {
   }
 }
 
+const gFallbackImage =
+    'https://img.etimg.com/thumb/msid-75176755,width-640,resizemode-4,imgsize-612672/effect-of-coronavirus-on-food.jpg';
+
 class _BackgroundImage extends StatelessWidget {
   const _BackgroundImage({
-    Key key,
-    @required this.imageUrl,
-  }) : super(key: key);
+    required this.imageUrl,
+  });
 
   final String imageUrl;
 
@@ -70,9 +70,7 @@ class _BackgroundImage extends StatelessWidget {
 }
 
 class _BackgroundDim extends StatelessWidget {
-  const _BackgroundDim({
-    Key key,
-  }) : super(key: key);
+  const _BackgroundDim();
 
   @override
   Widget build(BuildContext context) {
@@ -84,10 +82,9 @@ class _BackgroundDim extends StatelessWidget {
 
 class _ForegroundContent extends StatelessWidget {
   const _ForegroundContent({
-    Key key,
-    @required this.item,
-    @required this.onTap,
-  }) : super(key: key);
+    required this.item,
+    required this.onTap,
+  });
 
   final MarketItem item;
   final Function() onTap;
@@ -117,9 +114,8 @@ class _ForegroundContent extends StatelessWidget {
 
 class _MainTexts extends StatelessWidget {
   const _MainTexts({
-    Key key,
-    @required this.item,
-  }) : super(key: key);
+    required this.item,
+  });
 
   final MarketItem item;
 
@@ -132,12 +128,12 @@ class _MainTexts extends StatelessWidget {
       children: [
         Text(
           '${item.name} ${item.portionInGram}g',
-          style: _textTheme.headline5.copyWith(color: Colors.white),
+          style: _textTheme.headline5?.copyWith(color: Colors.white),
         ),
         const SizedBox(height: 4),
         Text(
-          item.category,
-          style: _textTheme.caption.copyWith(color: Colors.white),
+          item.category ?? 'N/A',
+          style: _textTheme.caption?.copyWith(color: Colors.white),
         ),
       ],
     );

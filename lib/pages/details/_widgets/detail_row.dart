@@ -5,13 +5,12 @@ import '../../../common/utilities/dimensions.dart';
 
 class DetailRow extends StatelessWidget {
   const DetailRow({
-    Key key,
-    this.label,
-    this.detail,
-  }) : super(key: key);
+    required this.label,
+    required this.detail,
+  });
 
   final String label;
-  final String detail;
+  final String? detail;
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +24,8 @@ class DetailRow extends StatelessWidget {
             style: _textTheme.bodyText2,
           ),
           Text(
-            detail,
-            style: _textTheme.bodyText2.copyWith(fontWeight: gBoldFontWeight),
+            detail ?? 'N/A',
+            style: _textTheme.bodyText2?.copyWith(fontWeight: gBoldFontWeight),
           ),
         ],
       ),

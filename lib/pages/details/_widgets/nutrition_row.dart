@@ -4,10 +4,9 @@ import '../../../common/utilities/dimensions.dart';
 
 class NutritionRow extends StatelessWidget {
   const NutritionRow({
-    Key key,
-    this.label,
-    this.amount,
-  }) : super(key: key);
+    required this.label,
+    required this.amount,
+  });
 
   final String label;
   final String amount;

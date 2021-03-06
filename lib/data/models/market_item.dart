@@ -1,20 +1,20 @@
 import 'package:equatable/equatable.dart';
 
 class MarketItem extends Equatable {
-  final int id;
-  final String name;
-  final String manufacturer;
-  final String category;
-  final String imageUrl;
-  final String barcode;
-  final int portionInGram;
-  final String unit;
-  final int sugar;
-  final int calories;
-  final int protein;
-  final int carbohydrates;
-  final int fat;
-  final int water;
+  final int? id;
+  final String? name;
+  final String? manufacturer;
+  final String? category;
+  final String? imageUrl;
+  final String? barcode;
+  final int? portionInGram;
+  final String? unit;
+  final int? sugar;
+  final int? calories;
+  final int? protein;
+  final int? carbohydrates;
+  final int? fat;
+  final int? water;
   final bool isVegan;
 
   const MarketItem({
@@ -32,10 +32,10 @@ class MarketItem extends Equatable {
     this.carbohydrates,
     this.fat,
     this.water,
-    this.isVegan,
+    this.isVegan = false,
   });
 
-  factory MarketItem.fromJson(dynamic json) => MarketItem(
+  factory MarketItem.fromJson(Map<String, dynamic> json) => MarketItem(
         id: json['id'] as int,
         name: json['Bezeichnung'] as String,
         manufacturer: json['Hersteller'] as String,
@@ -72,7 +72,7 @@ class MarketItem extends Equatable {
       };
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         id,
         name,
         manufacturer,

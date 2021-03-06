@@ -4,7 +4,7 @@ import 'package:get/route_manager.dart';
 // + SnackBar
 
 void showSnackbar({
-  @required String message,
+  required String message,
   SnackbarType type = SnackbarType.neutral,
   Brightness brightness = Brightness.light,
   Duration duration = const Duration(seconds: 3),

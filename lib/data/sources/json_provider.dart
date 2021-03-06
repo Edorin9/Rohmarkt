@@ -8,8 +8,10 @@ class JsonProvider {
   // + Public
 
   Future<List<MarketItem>> getMarketItems() async {
-    final jsonMap = await _parseJsonFromAsset('market_items.json');
-    return (jsonMap as List).map((e) => MarketItem.fromJson(e)).toList();
+    final jsonMap = await _parseJsonFromAsset('market_items.json') as List;
+    return jsonMap
+        .map((e) => MarketItem.fromJson(e as Map<String, dynamic>))
+        .toList();
   }
 
   // + Private

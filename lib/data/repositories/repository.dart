@@ -1,5 +1,4 @@
 import 'package:either_option/either_option.dart';
-import 'package:meta/meta.dart';
 import 'package:supercharged/supercharged.dart';
 
 import '../../common/errors/exceptions.dart';
@@ -17,10 +16,10 @@ class Repository {
   final ConnectionChecker _connectionChecker;
 
   Repository({
-    @required DreamShapeApi api,
-    @required JsonProvider dummyProvider,
-    @required ConnectionChecker connectionChecker,
-  })  : _api = api,
+    required DreamShapeApi api,
+    required JsonProvider dummyProvider,
+    required ConnectionChecker connectionChecker,
+  })   : _api = api,
         _dummyProvider = dummyProvider,
         _connectionChecker = connectionChecker;
 
@@ -35,7 +34,7 @@ class Repository {
           final fallbackMarketItems = await _dummyProvider.getMarketItems();
           return Right(fallbackMarketItems);
         } else {
-          final failure = NetworkFailure(e.message);
+          final failure = NetworkFailure(e.message ?? 'No Items Found');
           return Left(failure);
         }
       }

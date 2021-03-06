@@ -7,7 +7,7 @@ import '_widgets/_widgets.dart';
 import 'market.viewmodel.dart';
 
 class MarketView extends StatelessWidget {
-  const MarketView({Key key}) : super(key: key);
+  const MarketView();
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +28,7 @@ class _AppBar extends AppBar {
 }
 
 class _Body extends GetxView<MarketViewModel> {
-  const _Body({
-    Key key,
-  }) : super(key: key);
+  const _Body();
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +43,7 @@ class _Body extends GetxView<MarketViewModel> {
 }
 
 class _List extends GetxView<MarketViewModel> {
-  const _List({Key key}) : super(key: key);
+  const _List();
 
   @override
   Widget build(BuildContext context) {

@@ -1,14 +1,14 @@
-import 'package:data_connection_checker/data_connection_checker.dart';
+import 'package:cross_connectivity/cross_connectivity.dart';
 import 'package:either_option/either_option.dart';
 
 import '../../common/errors/failures.dart';
 
 class ConnectionChecker {
-  ConnectionChecker() : _dataConnectionChecker = DataConnectionChecker();
+  ConnectionChecker() : _connectivity = Connectivity();
 
-  final DataConnectionChecker _dataConnectionChecker;
+  final Connectivity _connectivity;
 
-  Future<bool> get isConnected => _dataConnectionChecker.hasConnection;
+  Future<bool> get isConnected => _connectivity.checkConnection();
 
   Future<Either<Failure, R>> handleNetworkJob<R>(
     Future<Either<Failure, R>> Function() executeJob,

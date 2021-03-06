@@ -18,25 +18,26 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  barcode_widget: ^1.5.0
-  data_connection_checker: ^0.3.4
-  either_option: ^1.0.6
-  equatable: ^1.2.5
-  flutter_native_splash: ^0.2.10
-  flutter_svg: ^0.19.1
-  get: ^3.25.6
-  google_fonts: ^1.1.2
-  supercharged: ^1.12.0
+  barcode_widget: ^2.0.0
+  cross_connectivity: ^3.0.1
+  cupertino_icons: ^1.0.2
+  either_option: ^2.0.1-dev.1
+  equatable: ^2.0.0
+  flutter_native_splash: ^1.0.3
+  flutter_svg: ^0.21.0-nullsafety.0
+  get: ^4.0.0-nullsafety.2
+  google_fonts: ^2.0.0
+  supercharged: ^2.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  lint: ^1.2.0
+  lint: ^1.5.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

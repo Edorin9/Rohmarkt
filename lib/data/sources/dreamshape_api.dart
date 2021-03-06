@@ -12,8 +12,10 @@ class DreamShapeApi extends GetConnect {
   Future<List<MarketItem>> getMarketItems() async {
     final response = await get('/dummy.php');
     if (response.isOk) {
-      final jsonList = jsonDecode(response.bodyString) as List;
-      return jsonList.map((item) => MarketItem.fromJson(item)).toList();
+      final jsonList = jsonDecode(response.bodyString.toString()) as List;
+      return jsonList
+          .map((item) => MarketItem.fromJson(item as Map<String, dynamic>))
+          .toList();
     } else {
       throw NetworkException(
         'Error Code ${response.statusCode}: ${response.statusText}',

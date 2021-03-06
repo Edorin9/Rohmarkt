@@ -9,7 +9,7 @@ import '_widgets/_widgets.dart';
 import 'details.viewmodel.dart';
 
 class DetailsView extends GetxView<DetailsViewModel> {
-  const DetailsView({Key key}) : super(key: key);
+  const DetailsView();
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class DetailsView extends GetxView<DetailsViewModel> {
 }
 
 class _SliverAppHeader extends GetxView<DetailsViewModel> {
-  const _SliverAppHeader({Key key}) : super(key: key);
+  const _SliverAppHeader();
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class _SliverAppHeader extends GetxView<DetailsViewModel> {
               const SizedBox(width: 8),
               Text(
                 '${_.marketItem.name} ${_.marketItem.portionInGram}g',
-                style: _textTheme.headline5.copyWith(color: Colors.white),
+                style: _textTheme.headline5?.copyWith(color: Colors.white),
               ),
             ],
           ),
@@ -56,7 +56,7 @@ class _SliverAppHeader extends GetxView<DetailsViewModel> {
             color: Colors.black.withOpacity(0.63),
           ),
           child: FadeInImage.assetNetwork(
-            image: _.marketItem.imageUrl,
+            image: _.marketItem.imageUrl ?? gFallbackImage,
             placeholder: 'assets/images/loader.gif',
             fit: BoxFit.cover,
           ),
@@ -67,8 +67,11 @@ class _SliverAppHeader extends GetxView<DetailsViewModel> {
   }
 }
 
+const gFallbackImage =
+    'https://img.etimg.com/thumb/msid-75176755,width-640,resizemode-4,imgsize-612672/effect-of-coronavirus-on-food.jpg';
+
 class _SliverContent extends StatelessWidget {
-  const _SliverContent({Key key}) : super(key: key);
+  const _SliverContent();
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +93,7 @@ class _SliverContent extends StatelessWidget {
 }
 
 class _DetailSection extends GetxView<DetailsViewModel> {
-  const _DetailSection({Key key}) : super(key: key);
+  const _DetailSection();
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +118,7 @@ class _DetailSection extends GetxView<DetailsViewModel> {
 }
 
 class _NutritionSection extends GetxView<DetailsViewModel> {
-  const _NutritionSection({Key key}) : super(key: key);
+  const _NutritionSection();
 
   @override
   Widget build(BuildContext context) {
@@ -165,15 +168,15 @@ class _NutritionSection extends GetxView<DetailsViewModel> {
 }
 
 class _BarcodeView extends GetxView<DetailsViewModel> {
-  const _BarcodeView({Key key}) : super(key: key);
+  const _BarcodeView();
 
   @override
   Widget build(BuildContext context) {
     final _ = viewModel;
-    return (_.marketItem.barcode.isNotEmpty)
+    return (_.marketItem.barcode?.isEmpty == false)
         ? Column(
             children: [
-              _Barcode(_.marketItem.barcode),
+              _Barcode(_.marketItem.barcode ?? ''),
               SizedBox(height: Get.height / 2),
             ],
           )
@@ -182,7 +185,7 @@ class _BarcodeView extends GetxView<DetailsViewModel> {
 }
 
 class _Barcode extends StatelessWidget {
-  const _Barcode([this.barcode, Key key]) : super(key: key);
+  const _Barcode(this.barcode);
 
   final String barcode;
 

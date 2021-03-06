@@ -3,9 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class VeganIndicator extends StatelessWidget {
   const VeganIndicator({
-    Key key,
-    @required this.isVegan,
-  }) : super(key: key);
+    required this.isVegan,
+  });
 
   final bool isVegan;
 
