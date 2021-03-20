@@ -16,7 +16,7 @@ class ConnectionChecker {
     if (await isConnected) {
       return executeJob();
     } else {
-      const failure = ConnectionFailure('Please connect to the internet');
+      const failure = Failure.connection('Please connect to the internet');
       return Left(failure);
     }
   }

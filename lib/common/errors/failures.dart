@@ -1,29 +1,21 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter/foundation.dart';
 
-/// + Repository-level failure that contains a [message]
+part 'failures.freezed.dart';
 
-abstract class Failure extends Equatable {
-  final String message;
+/// + Repository-level errors containing a [message]
 
-  const Failure([this.message = "Unexpected Error"]);
+@freezed
+class Failure with _$Failure {
+  const factory Failure([
+    @Default('Unexpected Error') String message,
+  ]) = _Failure;
 
-  @override
-  List<Object> get props => [message];
-}
+  const factory Failure.network([
+    @Default('Network Error') String message,
+  ]) = NetworkFailure;
 
-// + Repository-level failures
-
-class NetworkFailure extends Failure {
-  static const defaultMessage = 'Network Failure';
-  const NetworkFailure([String message = defaultMessage]) : super(message);
-}
-
-class ConnectionFailure extends Failure {
-  static const defaultMessage = 'Connection Failure';
-  const ConnectionFailure([String message = defaultMessage]) : super(message);
-}
-
-class CacheFailure extends Failure {
-  static const defaultMessage = 'Cache Failure';
-  const CacheFailure([String message = defaultMessage]) : super(message);
+  const factory Failure.connection([
+    @Default('Connection Error') String message,
+  ]) = ConnectionFailure;
 }

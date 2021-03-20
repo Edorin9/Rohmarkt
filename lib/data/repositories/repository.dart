@@ -34,7 +34,7 @@ class Repository {
           final fallbackMarketItems = await _dummyProvider.getMarketItems();
           return Right(fallbackMarketItems);
         } else {
-          final failure = NetworkFailure(e.message ?? 'No Items Found');
+          final failure = Failure.network(e.message ?? 'No Items Found');
           return Left(failure);
         }
       }

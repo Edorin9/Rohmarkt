@@ -1,4 +1,4 @@
-// + Datasource-level failures
+// + Datasource-level errors
 
 class NetworkException implements Exception {
   final String? message;
@@ -7,13 +7,4 @@ class NetworkException implements Exception {
 
   @override
   String toString() => 'Network Exception: ${message ?? 'Error unknown'}';
-}
-
-class CacheException implements Exception {
-  final String? message;
-
-  const CacheException(this.message);
-
-  @override
-  String toString() => 'Cache Exception: ${message ?? 'Error unknown'}';
 }
