@@ -6,10 +6,10 @@ import '../../common/mvvm/getx_view.dart';
 import '../../common/utilities/dimensions.dart';
 import '../../widgets/vegan_indicator.dart';
 import '_widgets/_widgets.dart';
-import 'details.viewmodel.dart';
+import 'detail.viewmodel.dart';
 
-class DetailsView extends GetxView<DetailsViewModel> {
-  const DetailsView();
+class DetailView extends GetxView<DetailViewModel> {
+  const DetailView();
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +24,13 @@ class DetailsView extends GetxView<DetailsViewModel> {
   }
 }
 
-class _SliverAppHeader extends GetxView<DetailsViewModel> {
+class _SliverAppHeader extends GetxView<DetailViewModel> {
   const _SliverAppHeader();
 
   @override
   Widget build(BuildContext context) {
     final _textTheme = Theme.of(context).textTheme;
-    final _ = viewModel;
+    final _vM = viewModel;
     return SliverAppBar(
       brightness: Brightness.dark,
       floating: true,
@@ -42,10 +42,10 @@ class _SliverAppHeader extends GetxView<DetailsViewModel> {
         title: FittedBox(
           child: Row(
             children: [
-              VeganIndicator(isVegan: _.marketItem.isVegan ?? false),
+              VeganIndicator(isVegan: _vM.marketItem.isVegan ?? false),
               const SizedBox(width: 8),
               Text(
-                '${_.marketItem.name} ${_.marketItem.portionInGram}g',
+                '${_vM.marketItem.name} ${_vM.marketItem.portionInGram}g',
                 style: _textTheme.headline5?.copyWith(color: Colors.white),
               ),
             ],
@@ -56,7 +56,7 @@ class _SliverAppHeader extends GetxView<DetailsViewModel> {
             color: Colors.black.withOpacity(0.63),
           ),
           child: FadeInImage.assetNetwork(
-            image: _.marketItem.imageUrl ?? gFallbackImage,
+            image: _vM.marketItem.imageUrl ?? gFallbackImage,
             placeholder: 'assets/images/loader.gif',
             fit: BoxFit.cover,
           ),
@@ -92,38 +92,38 @@ class _SliverContent extends StatelessWidget {
   }
 }
 
-class _DetailSection extends GetxView<DetailsViewModel> {
+class _DetailSection extends GetxView<DetailViewModel> {
   const _DetailSection();
 
   @override
   Widget build(BuildContext context) {
-    final _ = viewModel;
+    final _vM = viewModel;
     return Column(
       children: [
         DetailRow(
           label: 'Hersteller',
-          detail: _.marketItem.manufacturer,
+          detail: _vM.marketItem.manufacturer,
         ),
         DetailRow(
           label: 'Kategorie',
-          detail: _.marketItem.category,
+          detail: _vM.marketItem.category,
         ),
         DetailRow(
           label: 'Vegan',
-          detail: _.marketItem.isVegan == true ? 'Ja' : 'Nein',
+          detail: _vM.marketItem.isVegan == true ? 'Ja' : 'Nein',
         ),
       ],
     );
   }
 }
 
-class _NutritionSection extends GetxView<DetailsViewModel> {
+class _NutritionSection extends GetxView<DetailViewModel> {
   const _NutritionSection();
 
   @override
   Widget build(BuildContext context) {
     final _textTheme = Theme.of(context).textTheme;
-    final _ = viewModel;
+    final _vM = viewModel;
     return Column(
       children: [
         Center(
@@ -135,48 +135,48 @@ class _NutritionSection extends GetxView<DetailsViewModel> {
         const SizedBox(height: 8),
         NutritionRow(
           label: 'Zucker',
-          amount: '${_.marketItem.sugar}${_.marketItem.unit}',
+          amount: '${_vM.marketItem.sugar}${_vM.marketItem.unit}',
         ),
         const SizedBox(height: 3),
         NutritionRow(
           label: 'Kalorien',
-          amount: '${_.marketItem.calories}${_.marketItem.unit}',
+          amount: '${_vM.marketItem.calories}${_vM.marketItem.unit}',
         ),
         const SizedBox(height: 3),
         NutritionRow(
           label: 'Eiweiss',
-          amount: '${_.marketItem.protein}${_.marketItem.unit}',
+          amount: '${_vM.marketItem.protein}${_vM.marketItem.unit}',
         ),
         const SizedBox(height: 3),
         NutritionRow(
           label: 'Kohlenhydrate',
-          amount: '${_.marketItem.carbohydrates}${_.marketItem.unit}',
+          amount: '${_vM.marketItem.carbohydrates}${_vM.marketItem.unit}',
         ),
         const SizedBox(height: 3),
         NutritionRow(
           label: 'Fett',
-          amount: '${_.marketItem.fat}${_.marketItem.unit}',
+          amount: '${_vM.marketItem.fat}${_vM.marketItem.unit}',
         ),
         const SizedBox(height: 3),
         NutritionRow(
           label: 'Wasser',
-          amount: '${_.marketItem.water}${_.marketItem.unit}',
+          amount: '${_vM.marketItem.water}${_vM.marketItem.unit}',
         ),
       ],
     );
   }
 }
 
-class _BarcodeView extends GetxView<DetailsViewModel> {
+class _BarcodeView extends GetxView<DetailViewModel> {
   const _BarcodeView();
 
   @override
   Widget build(BuildContext context) {
-    final _ = viewModel;
-    return (_.marketItem.barcode?.isEmpty == false)
+    final _vM = viewModel;
+    return (_vM.marketItem.barcode?.isEmpty == false)
         ? Column(
             children: [
-              _Barcode(_.marketItem.barcode ?? ''),
+              _Barcode(_vM.marketItem.barcode ?? ''),
               SizedBox(height: Get.height / 2),
             ],
           )

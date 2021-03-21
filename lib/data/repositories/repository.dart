@@ -28,13 +28,13 @@ class Repository {
       try {
         final marketItems = await _api.getMarketItems();
         return Right(marketItems);
-      } on NetworkException catch (e) {
+      } on HttpException catch (e) {
         if (fallbackAllowed) {
           await Future.delayed(1.seconds);
           final fallbackMarketItems = await _dummyProvider.getMarketItems();
           return Right(fallbackMarketItems);
         } else {
-          final failure = Failure.network(e.message ?? 'No Items Found');
+          final failure = Failure.http(e.message ?? 'No Items Found');
           return Left(failure);
         }
       }

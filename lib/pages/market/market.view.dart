@@ -32,11 +32,11 @@ class _Body extends GetxView<MarketViewModel> {
 
   @override
   Widget build(BuildContext context) {
-    final _ = viewModel;
+    final _vM = viewModel;
     return Stack(
       children: [
         const _List(),
-        Obx(() => Loader(isShown: _.isLoading)),
+        Obx(() => Loader(isShown: _vM.isLoading)),
       ],
     );
   }
@@ -47,18 +47,18 @@ class _List extends GetxView<MarketViewModel> {
 
   @override
   Widget build(BuildContext context) {
-    final _ = viewModel;
+    final _vM = viewModel;
     return Obx(
       () => AnimatedOpacity(
-        opacity: _.isLoading ? 0 : 1,
+        opacity: _vM.isLoading ? 0 : 1,
         duration: 360.milliseconds,
         curve: Curves.easeIn,
         child: ListView.separated(
           padding: gInsets16,
-          itemCount: _.items.length,
+          itemCount: _vM.items.length,
           itemBuilder: (context, index) => MarketItemCard(
-            item: _.items[index],
-            onTap: () => _.onItemClicked(_.items[index]),
+            item: _vM.items[index],
+            onTap: () => _vM.onItemClicked(_vM.items[index]),
           ),
           separatorBuilder: (context, index) => const SizedBox(height: 8),
         ),

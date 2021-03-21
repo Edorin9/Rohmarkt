@@ -1,10 +1,10 @@
 // + Datasource-level errors
 
-class NetworkException implements Exception {
+class HttpException implements Exception {
   final String? message;
 
-  const NetworkException(this.message);
+  const HttpException(this.message);
 
   @override
-  String toString() => 'Network Exception: ${message ?? 'Error unknown'}';
+  String toString() => 'Http Exception: ${message ?? 'Error unknown'}';
 }

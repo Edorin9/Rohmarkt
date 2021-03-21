@@ -25,7 +25,7 @@ class MarketViewModel extends GetxViewModel {
   // + Events
 
   void onItemClicked(MarketItem item) =>
-      Get.toNamed(Routes.details, arguments: item);
+      Get.toNamed(Routes.detail, arguments: item);
 
   // + Overrides
 

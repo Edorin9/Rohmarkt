@@ -1,6 +1,6 @@
 import 'package:get/get_navigation/get_navigation.dart';
 
-import '../pages/details/details.barrel.dart';
+import '../pages/detail/detail.barrel.dart';
 import '../pages/market/market.barrel.dart';
 
 part 'routes.dart';
@@ -15,9 +15,9 @@ class Pages {
     ),
     // + Details
     GetPage(
-      name: Routes.details,
-      page: () => const DetailsView(),
-      binding: DetailsBinding(),
+      name: Routes.detail,
+      page: () => const DetailView(),
+      binding: DetailBinding(),
     ),
   ];
 }

@@ -22,20 +22,14 @@ class _$FailureTearOff {
     );
   }
 
-  NetworkFailure network([String message = 'Network Error']) {
-    return NetworkFailure(
+  HttpFailure http([String message = 'Http Error']) {
+    return HttpFailure(
       message,
     );
   }
 
   ConnectionFailure connection([String message = 'Connection Error']) {
     return ConnectionFailure(
-      message,
-    );
-  }
-
-  CacheFailure cache([String message = 'Connection Error']) {
-    return CacheFailure(
       message,
     );
   }
@@ -51,34 +45,30 @@ mixin _$Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String message) $default, {
-    required TResult Function(String message) network,
+    required TResult Function(String message) http,
     required TResult Function(String message) connection,
-    required TResult Function(String message) cache,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String message)? $default, {
-    TResult Function(String message)? network,
+    TResult Function(String message)? http,
     TResult Function(String message)? connection,
-    TResult Function(String message)? cache,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Failure value) $default, {
-    required TResult Function(NetworkFailure value) network,
+    required TResult Function(HttpFailure value) http,
     required TResult Function(ConnectionFailure value) connection,
-    required TResult Function(CacheFailure value) cache,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Failure value)? $default, {
-    TResult Function(NetworkFailure value)? network,
+    TResult Function(HttpFailure value)? http,
     TResult Function(ConnectionFailure value)? connection,
-    TResult Function(CacheFailure value)? cache,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -187,9 +177,8 @@ class _$_Failure with DiagnosticableTreeMixin implements _Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String message) $default, {
-    required TResult Function(String message) network,
+    required TResult Function(String message) http,
     required TResult Function(String message) connection,
-    required TResult Function(String message) cache,
   }) {
     return $default(message);
   }
@@ -198,9 +187,8 @@ class _$_Failure with DiagnosticableTreeMixin implements _Failure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String message)? $default, {
-    TResult Function(String message)? network,
+    TResult Function(String message)? http,
     TResult Function(String message)? connection,
-    TResult Function(String message)? cache,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -213,9 +201,8 @@ class _$_Failure with DiagnosticableTreeMixin implements _Failure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Failure value) $default, {
-    required TResult Function(NetworkFailure value) network,
+    required TResult Function(HttpFailure value) http,
     required TResult Function(ConnectionFailure value) connection,
-    required TResult Function(CacheFailure value) cache,
   }) {
     return $default(this);
   }
@@ -224,9 +211,8 @@ class _$_Failure with DiagnosticableTreeMixin implements _Failure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Failure value)? $default, {
-    TResult Function(NetworkFailure value)? network,
+    TResult Function(HttpFailure value)? http,
     TResult Function(ConnectionFailure value)? connection,
-    TResult Function(CacheFailure value)? cache,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -248,29 +234,29 @@ abstract class _Failure implements Failure {
 }
 
 /// @nodoc
-abstract class $NetworkFailureCopyWith<$Res> implements $FailureCopyWith<$Res> {
-  factory $NetworkFailureCopyWith(
-          NetworkFailure value, $Res Function(NetworkFailure) then) =
-      _$NetworkFailureCopyWithImpl<$Res>;
+abstract class $HttpFailureCopyWith<$Res> implements $FailureCopyWith<$Res> {
+  factory $HttpFailureCopyWith(
+          HttpFailure value, $Res Function(HttpFailure) then) =
+      _$HttpFailureCopyWithImpl<$Res>;
   @override
   $Res call({String message});
 }
 
 /// @nodoc
-class _$NetworkFailureCopyWithImpl<$Res> extends _$FailureCopyWithImpl<$Res>
-    implements $NetworkFailureCopyWith<$Res> {
-  _$NetworkFailureCopyWithImpl(
-      NetworkFailure _value, $Res Function(NetworkFailure) _then)
-      : super(_value, (v) => _then(v as NetworkFailure));
+class _$HttpFailureCopyWithImpl<$Res> extends _$FailureCopyWithImpl<$Res>
+    implements $HttpFailureCopyWith<$Res> {
+  _$HttpFailureCopyWithImpl(
+      HttpFailure _value, $Res Function(HttpFailure) _then)
+      : super(_value, (v) => _then(v as HttpFailure));
 
   @override
-  NetworkFailure get _value => super._value as NetworkFailure;
+  HttpFailure get _value => super._value as HttpFailure;
 
   @override
   $Res call({
     Object? message = freezed,
   }) {
-    return _then(NetworkFailure(
+    return _then(HttpFailure(
       message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -280,30 +266,30 @@ class _$NetworkFailureCopyWithImpl<$Res> extends _$FailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$NetworkFailure with DiagnosticableTreeMixin implements NetworkFailure {
-  const _$NetworkFailure([this.message = 'Network Error']);
+class _$HttpFailure with DiagnosticableTreeMixin implements HttpFailure {
+  const _$HttpFailure([this.message = 'Http Error']);
 
-  @JsonKey(defaultValue: 'Network Error')
+  @JsonKey(defaultValue: 'Http Error')
   @override
   final String message;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Failure.network(message: $message)';
+    return 'Failure.http(message: $message)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'Failure.network'))
+      ..add(DiagnosticsProperty('type', 'Failure.http'))
       ..add(DiagnosticsProperty('message', message));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is NetworkFailure &&
+        (other is HttpFailure &&
             (identical(other.message, message) ||
                 const DeepCollectionEquality().equals(other.message, message)));
   }
@@ -314,31 +300,29 @@ class _$NetworkFailure with DiagnosticableTreeMixin implements NetworkFailure {
 
   @JsonKey(ignore: true)
   @override
-  $NetworkFailureCopyWith<NetworkFailure> get copyWith =>
-      _$NetworkFailureCopyWithImpl<NetworkFailure>(this, _$identity);
+  $HttpFailureCopyWith<HttpFailure> get copyWith =>
+      _$HttpFailureCopyWithImpl<HttpFailure>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String message) $default, {
-    required TResult Function(String message) network,
+    required TResult Function(String message) http,
     required TResult Function(String message) connection,
-    required TResult Function(String message) cache,
   }) {
-    return network(message);
+    return http(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String message)? $default, {
-    TResult Function(String message)? network,
+    TResult Function(String message)? http,
     TResult Function(String message)? connection,
-    TResult Function(String message)? cache,
     required TResult orElse(),
   }) {
-    if (network != null) {
-      return network(message);
+    if (http != null) {
+      return http(message);
     }
     return orElse();
   }
@@ -347,37 +331,35 @@ class _$NetworkFailure with DiagnosticableTreeMixin implements NetworkFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Failure value) $default, {
-    required TResult Function(NetworkFailure value) network,
+    required TResult Function(HttpFailure value) http,
     required TResult Function(ConnectionFailure value) connection,
-    required TResult Function(CacheFailure value) cache,
   }) {
-    return network(this);
+    return http(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Failure value)? $default, {
-    TResult Function(NetworkFailure value)? network,
+    TResult Function(HttpFailure value)? http,
     TResult Function(ConnectionFailure value)? connection,
-    TResult Function(CacheFailure value)? cache,
     required TResult orElse(),
   }) {
-    if (network != null) {
-      return network(this);
+    if (http != null) {
+      return http(this);
     }
     return orElse();
   }
 }
 
-abstract class NetworkFailure implements Failure {
-  const factory NetworkFailure([String message]) = _$NetworkFailure;
+abstract class HttpFailure implements Failure {
+  const factory HttpFailure([String message]) = _$HttpFailure;
 
   @override
   String get message => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $NetworkFailureCopyWith<NetworkFailure> get copyWith =>
+  $HttpFailureCopyWith<HttpFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -458,9 +440,8 @@ class _$ConnectionFailure
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String message) $default, {
-    required TResult Function(String message) network,
+    required TResult Function(String message) http,
     required TResult Function(String message) connection,
-    required TResult Function(String message) cache,
   }) {
     return connection(message);
   }
@@ -469,9 +450,8 @@ class _$ConnectionFailure
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String message)? $default, {
-    TResult Function(String message)? network,
+    TResult Function(String message)? http,
     TResult Function(String message)? connection,
-    TResult Function(String message)? cache,
     required TResult orElse(),
   }) {
     if (connection != null) {
@@ -484,9 +464,8 @@ class _$ConnectionFailure
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Failure value) $default, {
-    required TResult Function(NetworkFailure value) network,
+    required TResult Function(HttpFailure value) http,
     required TResult Function(ConnectionFailure value) connection,
-    required TResult Function(CacheFailure value) cache,
   }) {
     return connection(this);
   }
@@ -495,9 +474,8 @@ class _$ConnectionFailure
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Failure value)? $default, {
-    TResult Function(NetworkFailure value)? network,
+    TResult Function(HttpFailure value)? http,
     TResult Function(ConnectionFailure value)? connection,
-    TResult Function(CacheFailure value)? cache,
     required TResult orElse(),
   }) {
     if (connection != null) {
@@ -515,139 +493,5 @@ abstract class ConnectionFailure implements Failure {
   @override
   @JsonKey(ignore: true)
   $ConnectionFailureCopyWith<ConnectionFailure> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $CacheFailureCopyWith<$Res> implements $FailureCopyWith<$Res> {
-  factory $CacheFailureCopyWith(
-          CacheFailure value, $Res Function(CacheFailure) then) =
-      _$CacheFailureCopyWithImpl<$Res>;
-  @override
-  $Res call({String message});
-}
-
-/// @nodoc
-class _$CacheFailureCopyWithImpl<$Res> extends _$FailureCopyWithImpl<$Res>
-    implements $CacheFailureCopyWith<$Res> {
-  _$CacheFailureCopyWithImpl(
-      CacheFailure _value, $Res Function(CacheFailure) _then)
-      : super(_value, (v) => _then(v as CacheFailure));
-
-  @override
-  CacheFailure get _value => super._value as CacheFailure;
-
-  @override
-  $Res call({
-    Object? message = freezed,
-  }) {
-    return _then(CacheFailure(
-      message == freezed
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-class _$CacheFailure with DiagnosticableTreeMixin implements CacheFailure {
-  const _$CacheFailure([this.message = 'Connection Error']);
-
-  @JsonKey(defaultValue: 'Connection Error')
-  @override
-  final String message;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Failure.cache(message: $message)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Failure.cache'))
-      ..add(DiagnosticsProperty('message', message));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is CacheFailure &&
-            (identical(other.message, message) ||
-                const DeepCollectionEquality().equals(other.message, message)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
-
-  @JsonKey(ignore: true)
-  @override
-  $CacheFailureCopyWith<CacheFailure> get copyWith =>
-      _$CacheFailureCopyWithImpl<CacheFailure>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String message) $default, {
-    required TResult Function(String message) network,
-    required TResult Function(String message) connection,
-    required TResult Function(String message) cache,
-  }) {
-    return cache(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String message)? $default, {
-    TResult Function(String message)? network,
-    TResult Function(String message)? connection,
-    TResult Function(String message)? cache,
-    required TResult orElse(),
-  }) {
-    if (cache != null) {
-      return cache(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_Failure value) $default, {
-    required TResult Function(NetworkFailure value) network,
-    required TResult Function(ConnectionFailure value) connection,
-    required TResult Function(CacheFailure value) cache,
-  }) {
-    return cache(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_Failure value)? $default, {
-    TResult Function(NetworkFailure value)? network,
-    TResult Function(ConnectionFailure value)? connection,
-    TResult Function(CacheFailure value)? cache,
-    required TResult orElse(),
-  }) {
-    if (cache != null) {
-      return cache(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class CacheFailure implements Failure {
-  const factory CacheFailure([String message]) = _$CacheFailure;
-
-  @override
-  String get message => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  $CacheFailureCopyWith<CacheFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }

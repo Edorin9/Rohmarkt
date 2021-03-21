@@ -1,5 +1,5 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'failures.freezed.dart';
 
@@ -11,11 +11,11 @@ class Failure with _$Failure {
     @Default('Unexpected Error') String message,
   ]) = _Failure;
 
-  const factory Failure.network([
-    @Default('Network Error') String message,
-  ]) = NetworkFailure;
-
   const factory Failure.connection([
     @Default('Connection Error') String message,
   ]) = ConnectionFailure;
+
+  const factory Failure.http([
+    @Default('Http Error') String message,
+  ]) = HttpFailure;
 }
