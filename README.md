@@ -17,9 +17,9 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Notes
 
-I suggest to create a new flutter project and transfer/copy the following files or code:
+I suggest creating a new flutter project and transfer/copy the following files or code:
 
-- **assets** directory *(assets/images + assets/json)*
-- **dependencies**, **dev dependencies** and **flutter** sections of **pubspec.yaml** *(not the whole file)*
+- **assets** directory *(assets/images and assets/json)*
+- **dependencies**, **dev dependencies** and **flutter** section of **pubspec.yaml** *(not the whole file)*
 - **analysis_options.yaml** file
 - the whole **lib** folder
