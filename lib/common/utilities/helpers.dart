@@ -5,29 +5,32 @@ import 'package:get/route_manager.dart';
 
 void showSnackbar({
   required String message,
-  SnackbarType type = SnackbarType.neutral,
+  Status status = Status.neutral,
   Brightness brightness = Brightness.light,
   Duration duration = const Duration(seconds: 3),
 }) {
   Get.rawSnackbar(
-    message: message,
-    leftBarIndicatorColor: (brightness == Brightness.dark) ? type.color : null,
-    backgroundColor: (brightness == Brightness.light)
-        ? type.color
-        : SnackbarType.neutral.color,
+    messageText: Text(
+      message,
+      style: const TextStyle(height: 1.44),
+    ),
+    leftBarIndicatorColor:
+        (brightness == Brightness.dark) ? status.color : null,
+    backgroundColor:
+        (brightness == Brightness.light) ? status.color : Status.neutral.color,
     duration: duration,
   );
 }
 
-enum SnackbarType { neutral, info, success, error, warning }
+enum Status { neutral, info, success, error, warning }
 
-extension SnackbarTypeExt on SnackbarType {
+extension StatusExt on Status {
   static const colors = {
-    SnackbarType.neutral: Color(0xFF303030),
-    SnackbarType.info: Color(0xFF1976D2),
-    SnackbarType.success: Color(0xFF689F38),
-    SnackbarType.error: Color(0xFFD32F2F),
-    SnackbarType.warning: Color(0xFFFFA000),
+    Status.neutral: Color(0xFF303030),
+    Status.info: Color(0xFF1976D2),
+    Status.success: Color(0xFF689F38),
+    Status.error: Color(0xFFD32F2F),
+    Status.warning: Color(0xFFFFA000),
   };
 
   Color get color => colors[this] ?? const Color(0xFF303030);

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../common/mvvm/getx_viewmodel.dart';
@@ -45,7 +46,9 @@ class MarketViewModel extends GetxViewModel {
     marketItemsResult.fold(
       (failure) => showSnackbar(
         message: failure.message,
-        type: SnackbarType.error,
+        status: Status.error,
+        brightness: Brightness.dark,
+        duration: 4.seconds,
       ),
       (marketItems) => _items.addAll(marketItems),
     );

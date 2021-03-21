@@ -10,10 +10,8 @@ class ConnectionChecker {
 
   Future<bool> get isConnected => _connectivity.checkConnection();
 
-  /// [executeJob] if a network connection exists.
+  /// [executeJob] if device is connected to .
   /// Otherwise, return a [ConnectionFailure] for [Left] [Failure].
-  ///
-  /// [R] is [executeJob]'s expected [Right] value.
   ///
   /// (this method is mostly for repository use)
   Future<Either<Failure, R>> handleNetworkJob<R>(
@@ -22,7 +20,8 @@ class ConnectionChecker {
     if (await isConnected) {
       return executeJob();
     } else {
-      const failure = Failure.connection('Please connect to the internet');
+      const failure = Failure.connection(
+          'No internet access.\nPlease connect to a reliable Wi-Fi network.');
       return Left(failure);
     }
   }
