@@ -10,6 +10,12 @@ class ConnectionChecker {
 
   Future<bool> get isConnected => _connectivity.checkConnection();
 
+  /// [executeJob] if a network connection exists.
+  /// Otherwise, return a [ConnectionFailure] for [Left] [Failure].
+  ///
+  /// [R] is [executeJob]'s expected [Right] value.
+  ///
+  /// (this method is mostly for repository use)
   Future<Either<Failure, R>> handleNetworkJob<R>(
     Future<Either<Failure, R>> Function() executeJob,
   ) async {

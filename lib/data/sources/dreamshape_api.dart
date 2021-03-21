@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:get/get_connect/connect.dart';
 
@@ -10,14 +11,14 @@ class DreamShapeApi extends GetConnect {
   void onInit() => httpClient.baseUrl = 'https://api.dreamshape.at';
 
   Future<List<MarketItem>> getMarketItems() async {
-    final response = await get('/dummy.php');
-    if (response.isOk) {
-      final jsonList = jsonDecode(response.bodyString.toString()) as List;
-      return jsonList
-          .map((item) => MarketItem.fromJson(item as Map<String, dynamic>))
-          .toList();
-    } else {
-      throw HttpException(response.statusCode, response.statusText);
-    }
+    final response = await get<List<MarketItem>>(
+      '/dummy.php',
+      decoder: (body) => (jsonDecode(body.toString()) as List)
+          .map((item) => MarketItem.fromJson(item))
+          .toList(),
+    );
+    return (response.isOk)
+        ? response.body ?? []
+        : throw HttpException(response.statusCode, response.statusText);
   }
 }

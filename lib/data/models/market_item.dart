@@ -24,8 +24,6 @@ class MarketItem with _$MarketItem {
     @JsonKey(name: 'Vegan') bool? isVegan,
   }) = _MarketItem;
 
-  factory MarketItem.fromJson(
-    Map<String, dynamic> json,
-  ) =>
-      _$MarketItemFromJson(json);
+  factory MarketItem.fromJson(dynamic json) =>
+      _$MarketItemFromJson(json as Map<String, dynamic>);
 }

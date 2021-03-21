@@ -8,15 +8,15 @@ class JsonProvider {
   // + Public
 
   Future<List<MarketItem>> getMarketItems() async {
-    final jsonMap = await _parseJsonFromAsset('market_items.json') as List;
-    return jsonMap
+    final jsonList = await _parseJsonAsset('market_items.json') as List;
+    return jsonList
         .map((e) => MarketItem.fromJson(e as Map<String, dynamic>))
         .toList();
   }
 
   // + Private
 
-  Future<dynamic> _parseJsonFromAsset(String filename) async {
+  Future<dynamic> _parseJsonAsset(String filename) async {
     final jsonString = await rootBundle.loadString('assets/json/$filename');
     return jsonDecode(jsonString);
   }
