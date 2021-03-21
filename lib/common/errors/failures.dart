@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'failures.freezed.dart';
 
-/// + Repository-level errors containing a [message]
+// + Repository-level errors containing a [message]
 
 @freezed
 class Failure with _$Failure {

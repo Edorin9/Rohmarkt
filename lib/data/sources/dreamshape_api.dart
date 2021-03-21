@@ -17,9 +17,7 @@ class DreamShapeApi extends GetConnect {
           .map((item) => MarketItem.fromJson(item as Map<String, dynamic>))
           .toList();
     } else {
-      throw HttpException(
-        'Error Code ${response.statusCode}: ${response.statusText}',
-      );
+      throw HttpException(response.statusCode, response.statusText);
     }
   }
 }
