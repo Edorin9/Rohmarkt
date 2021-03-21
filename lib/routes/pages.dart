@@ -7,13 +7,19 @@ part 'routes.dart';
 
 class Pages {
   static final routes = [
-    // + Market
+    ..._main,
+  ];
+
+  // + Main Pages
+
+  static final List<GetPage> _main = [
+    // Market
     GetPage(
       name: Routes.market,
       page: () => const MarketView(),
       binding: MarketBinding(),
     ),
-    // + Details
+    // Details
     GetPage(
       name: Routes.detail,
       page: () => const DetailView(),
