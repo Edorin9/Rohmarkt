@@ -10,7 +10,7 @@ class DreamShapeApi extends GetConnect {
   @override
   void onInit() => httpClient.baseUrl = 'https://api.dreamshape.at';
 
-  Future<List<MarketItem>> getMarketItems() async {
+  Future<List<MarketItem>?> getMarketItems() async {
     final response = await get<List<MarketItem>>(
       '/dummy.php',
       decoder: (body) => (jsonDecode(body.toString()) as List)
@@ -18,7 +18,7 @@ class DreamShapeApi extends GetConnect {
           .toList(),
     );
     return (response.isOk)
-        ? response.body ?? []
+        ? response.body
         : throw HttpException(response.statusCode, response.statusText);
   }
 }

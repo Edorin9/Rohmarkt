@@ -27,6 +27,7 @@ class Repository {
     return _connectionChecker.handleNetworkJob(() async {
       try {
         final marketItems = await _api.getMarketItems();
+        if (marketItems == null) throw const HttpException();
         return Right(marketItems);
       } on HttpException catch (e) {
         if (fallbackAllowed) {
