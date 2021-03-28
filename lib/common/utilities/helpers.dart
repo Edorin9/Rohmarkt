@@ -22,6 +22,8 @@ void showSnackbar({
   );
 }
 
+// + Status
+
 enum Status { neutral, info, success, error, warning }
 
 extension StatusExt on Status {

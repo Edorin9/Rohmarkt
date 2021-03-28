@@ -18,14 +18,14 @@ class MarketViewModel extends GetxViewModel {
 
   // loader
   final _isLoading = false.obs;
-  bool get isLoading => _isLoading.value ?? false;
+  bool get isLoading => _isLoading.value;
   // list
   final _items = <MarketItem>[].obs;
   List<MarketItem> get items => _items;
 
-  // + Events
+  // + Triggers
 
-  void onItemClicked(MarketItem item) =>
+  void marketItemClicked(MarketItem item) =>
       Get.toNamed(Routes.detail, arguments: item);
 
   // + Overrides
@@ -39,18 +39,22 @@ class MarketViewModel extends GetxViewModel {
   // + Private
 
   Future<void> _getMarketItems() async {
-    // start load -- call api
+    // start load -- load items
     _isLoading.value = true;
     final marketItemsResult = await _repository.getMarketItems();
     // result -> failure | success
     marketItemsResult.fold(
-      (failure) => showSnackbar(
-        message: failure.message,
-        status: Status.error,
-        brightness: Brightness.dark,
-        duration: 4.seconds,
-      ),
-      (marketItems) => _items.addAll(marketItems),
+      (failure) {
+        showSnackbar(
+          message: failure.message,
+          status: Status.error,
+          brightness: Brightness.dark,
+          duration: 4.seconds,
+        );
+      },
+      (marketItems) {
+        _items.addAll(marketItems);
+      },
     );
     // end load
     _isLoading.value = false;

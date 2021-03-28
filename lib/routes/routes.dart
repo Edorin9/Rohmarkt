@@ -1,6 +1,7 @@
 part of 'pages.dart';
 
-abstract class Routes {
+class Routes {
+  // + Main
   static const market = '/market';
   static const detail = '/detail';
 }

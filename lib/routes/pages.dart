@@ -10,18 +10,16 @@ class Pages {
     ..._main,
   ];
 
-  // + Main Pages
+  // + Main
 
   static final List<GetPage> _main = [
-    // Market
     GetPage(
-      name: Routes.market,
+      name: Routes.market, // Market
       page: () => const MarketView(),
       binding: MarketBinding(),
     ),
-    // Details
     GetPage(
-      name: Routes.detail,
+      name: Routes.detail, // Detail
       page: () => const DetailView(),
       binding: DetailBinding(),
     ),

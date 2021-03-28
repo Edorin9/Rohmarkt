@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class VeganIndicator extends StatelessWidget {
-  const VeganIndicator({
-    required this.isVegan,
-  });
+  const VeganIndicator(this.isVegan);
 
   final bool isVegan;
 

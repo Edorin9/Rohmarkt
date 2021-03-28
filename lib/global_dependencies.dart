@@ -7,17 +7,14 @@ import 'data/sources/json_provider.dart';
 class GlobalDependencies extends Bindings {
   @override
   void dependencies() {
-    // + ConnectionChecker
     Get.lazyPut<ConnectionChecker>(
-      () => ConnectionChecker(),
+      () => ConnectionChecker(), // ConnectionChecker
     );
-    // + JsonProvider
     Get.lazyPut<JsonProvider>(
-      () => JsonProvider(),
+      () => JsonProvider(), // JsonProvider
     );
-    // + DreamShapeApi
     Get.lazyPut<DreamShapeApi>(
-      () => DreamShapeApi(),
+      () => DreamShapeApi(), // DreamShapeApi
     );
   }
 }

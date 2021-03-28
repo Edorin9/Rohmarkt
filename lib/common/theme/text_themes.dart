@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-/// + Text Theme
+// + Text Theme
 
 final TextTheme gLatoTextTheme = TextTheme(
   headline1: GoogleFonts.lato(

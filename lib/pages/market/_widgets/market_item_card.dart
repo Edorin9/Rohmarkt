@@ -102,7 +102,7 @@ class _ForegroundContent extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _MainTexts(item: item),
-                VeganIndicator(isVegan: item.isVegan ?? false),
+                VeganIndicator(item.isVegan ?? false),
               ],
             ),
           ),

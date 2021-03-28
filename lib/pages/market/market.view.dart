@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../common/mvvm/getx_view.dart';
 import '../../common/utilities/dimensions.dart';
+import '../../widgets/smooth_activity_indicator.dart';
 import '_widgets/_widgets.dart';
 import 'market.viewmodel.dart';
 
@@ -36,7 +37,7 @@ class _Body extends GetxView<MarketViewModel> {
     return Stack(
       children: [
         const _List(),
-        Obx(() => Loader(isShown: _vM.isLoading)),
+        Obx(() => SmoothActivityIndicator(shown: _vM.isLoading)),
       ],
     );
   }
@@ -57,8 +58,8 @@ class _List extends GetxView<MarketViewModel> {
           padding: gInsets16,
           itemCount: _vM.items.length,
           itemBuilder: (context, index) => MarketItemCard(
+            onTap: () => _vM.marketItemClicked(_vM.items[index]),
             item: _vM.items[index],
-            onTap: () => _vM.onItemClicked(_vM.items[index]),
           ),
           separatorBuilder: (context, index) => const SizedBox(height: 8),
         ),

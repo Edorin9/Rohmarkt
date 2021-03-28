@@ -42,7 +42,7 @@ class _SliverAppHeader extends GetxView<DetailViewModel> {
         title: FittedBox(
           child: Row(
             children: [
-              VeganIndicator(isVegan: _vM.marketItem.isVegan ?? false),
+              VeganIndicator(_vM.marketItem.isVegan ?? false),
               const SizedBox(width: 8),
               Text(
                 '${_vM.marketItem.name} ${_vM.marketItem.portionInGram}g',

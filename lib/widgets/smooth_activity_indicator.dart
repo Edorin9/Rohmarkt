@@ -3,28 +3,28 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/state_manager.dart';
 import 'package:supercharged/supercharged.dart';
 
-class Loader extends StatelessWidget {
-  const Loader({
-    required this.isShown,
+class SmoothActivityIndicator extends StatelessWidget {
+  const SmoothActivityIndicator({
+    required this.shown,
   });
 
-  final bool isShown;
+  final bool shown;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: ObxValue<RxBool>(
         (isVisible) => AnimatedOpacity(
-          opacity: isShown ? 1 : 0,
+          opacity: shown ? 1 : 0,
           duration: 270.milliseconds,
           curve: Curves.easeIn,
-          onEnd: () => isVisible.value = isShown,
+          onEnd: () => isVisible.value = shown,
           child: Visibility(
-            visible: isVisible.value ?? false,
+            visible: isVisible.value,
             child: const CircularProgressIndicator(),
           ),
         ),
-        (!isShown).obs,
+        (!shown).obs,
       ),
     );
   }

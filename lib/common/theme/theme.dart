@@ -7,7 +7,7 @@ class AppTheme {
   static final ThemeData light = AppTheme._buildFrom(gLightColorScheme);
   static final ThemeData dark = AppTheme._buildFrom(gDarkColorScheme);
 
-  /// + Build Theme from [ColorScheme]
+  // + Build Theme from [ColorScheme]
 
   static ThemeData _buildFrom(ColorScheme colorScheme) {
     return ThemeData.from(

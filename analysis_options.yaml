@@ -4,8 +4,9 @@ linter:
   rules:
     sort_pub_dependencies: false
     avoid_single_cascade_in_expression_statements: false
-    sort_unnamed_constructors_first: false
-    avoid_classes_with_only_static_members: false
+    exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
     
 analyzer:
   errors:

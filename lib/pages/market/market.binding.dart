@@ -6,14 +6,14 @@ import 'market.viewmodel.dart';
 class MarketBinding extends Bindings {
   @override
   void dependencies() {
-    // + MarketViewModel
     Get.lazyPut<MarketViewModel>(
-      () => MarketViewModel(repository: Get.find()),
+      () => MarketViewModel(
+        repository: Get.find(), // MarketViewModel
+      ),
     );
-    // + Repository
     Get.lazyPut<Repository>(
       () => Repository(
-        api: Get.find(),
+        api: Get.find(), // Repository
         dummyProvider: Get.find(),
         connectionChecker: Get.find(),
       ),

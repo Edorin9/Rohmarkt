@@ -10,7 +10,7 @@ class ConnectionChecker {
 
   Future<bool> get isConnected => _connectivity.checkConnection();
 
-  /// [executeJob] if device is connected to .
+  /// [executeJob] if device has internet access.
   /// Otherwise, return a [ConnectionFailure] for [Left] [Failure].
   ///
   /// (this method is mostly for repository use)
