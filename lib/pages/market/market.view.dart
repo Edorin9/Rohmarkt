@@ -13,19 +13,26 @@ class MarketView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _AppBar(),
+      appBar: const _AppBar(),
       body: const _Body(),
     );
   }
 }
 
-class _AppBar extends AppBar {
-  _AppBar()
-      : super(
-          brightness: Brightness.dark,
-          centerTitle: true,
-          title: const Text('Rohmarkt'),
-        );
+class _AppBar extends StatelessWidget implements PreferredSizeWidget {
+  const _AppBar();
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      brightness: Brightness.dark,
+      centerTitle: true,
+      title: const Text('Rohmarkt'),
+    );
+  }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
 class _Body extends GetxView<MarketViewModel> {

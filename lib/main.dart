@@ -7,20 +7,22 @@ import 'routes/pages.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(Rohmarkt());
+  runApp(const Rohmarkt());
 }
 
 /// + Rohmarkt
 
-class Rohmarkt extends GetMaterialApp {
-  Rohmarkt()
-      : super(
-          debugShowCheckedModeBanner: false,
-          themeMode: ThemeMode.dark,
-          theme: AppTheme.light,
-          darkTheme: AppTheme.dark,
-          initialBinding: GlobalDependencies(),
-          initialRoute: Routes.market,
-          getPages: Pages.routes,
-        );
+class Rohmarkt extends StatelessWidget {
+  const Rohmarkt();
+
+  @override
+  Widget build(BuildContext context) => GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        themeMode: ThemeMode.dark,
+        theme: AppTheme.light,
+        darkTheme: AppTheme.dark,
+        initialBinding: GlobalDependencies(),
+        initialRoute: Routes.market,
+        getPages: Pages.routes,
+      );
 }
