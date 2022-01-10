@@ -22,8 +22,8 @@ class _$FailureTearOff {
     );
   }
 
-  ConnectionFailure connection([String message = 'Connection Error']) {
-    return ConnectionFailure(
+  NetworkFailure network([String message = 'Network Error']) {
+    return NetworkFailure(
       message,
     );
   }
@@ -45,14 +45,14 @@ mixin _$Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String message) $default, {
-    required TResult Function(String message) connection,
+    required TResult Function(String message) network,
     required TResult Function(String message) http,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String message)? $default, {
-    TResult Function(String message)? connection,
+    TResult Function(String message)? network,
     TResult Function(String message)? http,
     required TResult orElse(),
   }) =>
@@ -60,14 +60,14 @@ mixin _$Failure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Failure value) $default, {
-    required TResult Function(ConnectionFailure value) connection,
+    required TResult Function(NetworkFailure value) network,
     required TResult Function(HttpFailure value) http,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Failure value)? $default, {
-    TResult Function(ConnectionFailure value)? connection,
+    TResult Function(NetworkFailure value)? network,
     TResult Function(HttpFailure value)? http,
     required TResult orElse(),
   }) =>
@@ -177,7 +177,7 @@ class _$_Failure with DiagnosticableTreeMixin implements _Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String message) $default, {
-    required TResult Function(String message) connection,
+    required TResult Function(String message) network,
     required TResult Function(String message) http,
   }) {
     return $default(message);
@@ -187,7 +187,7 @@ class _$_Failure with DiagnosticableTreeMixin implements _Failure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String message)? $default, {
-    TResult Function(String message)? connection,
+    TResult Function(String message)? network,
     TResult Function(String message)? http,
     required TResult orElse(),
   }) {
@@ -201,7 +201,7 @@ class _$_Failure with DiagnosticableTreeMixin implements _Failure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Failure value) $default, {
-    required TResult Function(ConnectionFailure value) connection,
+    required TResult Function(NetworkFailure value) network,
     required TResult Function(HttpFailure value) http,
   }) {
     return $default(this);
@@ -211,7 +211,7 @@ class _$_Failure with DiagnosticableTreeMixin implements _Failure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Failure value)? $default, {
-    TResult Function(ConnectionFailure value)? connection,
+    TResult Function(NetworkFailure value)? network,
     TResult Function(HttpFailure value)? http,
     required TResult orElse(),
   }) {
@@ -234,30 +234,29 @@ abstract class _Failure implements Failure {
 }
 
 /// @nodoc
-abstract class $ConnectionFailureCopyWith<$Res>
-    implements $FailureCopyWith<$Res> {
-  factory $ConnectionFailureCopyWith(
-          ConnectionFailure value, $Res Function(ConnectionFailure) then) =
-      _$ConnectionFailureCopyWithImpl<$Res>;
+abstract class $NetworkFailureCopyWith<$Res> implements $FailureCopyWith<$Res> {
+  factory $NetworkFailureCopyWith(
+          NetworkFailure value, $Res Function(NetworkFailure) then) =
+      _$NetworkFailureCopyWithImpl<$Res>;
   @override
   $Res call({String message});
 }
 
 /// @nodoc
-class _$ConnectionFailureCopyWithImpl<$Res> extends _$FailureCopyWithImpl<$Res>
-    implements $ConnectionFailureCopyWith<$Res> {
-  _$ConnectionFailureCopyWithImpl(
-      ConnectionFailure _value, $Res Function(ConnectionFailure) _then)
-      : super(_value, (v) => _then(v as ConnectionFailure));
+class _$NetworkFailureCopyWithImpl<$Res> extends _$FailureCopyWithImpl<$Res>
+    implements $NetworkFailureCopyWith<$Res> {
+  _$NetworkFailureCopyWithImpl(
+      NetworkFailure _value, $Res Function(NetworkFailure) _then)
+      : super(_value, (v) => _then(v as NetworkFailure));
 
   @override
-  ConnectionFailure get _value => super._value as ConnectionFailure;
+  NetworkFailure get _value => super._value as NetworkFailure;
 
   @override
   $Res call({
     Object? message = freezed,
   }) {
-    return _then(ConnectionFailure(
+    return _then(NetworkFailure(
       message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -267,32 +266,30 @@ class _$ConnectionFailureCopyWithImpl<$Res> extends _$FailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$ConnectionFailure
-    with DiagnosticableTreeMixin
-    implements ConnectionFailure {
-  const _$ConnectionFailure([this.message = 'Connection Error']);
+class _$NetworkFailure with DiagnosticableTreeMixin implements NetworkFailure {
+  const _$NetworkFailure([this.message = 'Network Error']);
 
-  @JsonKey(defaultValue: 'Connection Error')
+  @JsonKey(defaultValue: 'Network Error')
   @override
   final String message;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Failure.connection(message: $message)';
+    return 'Failure.network(message: $message)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'Failure.connection'))
+      ..add(DiagnosticsProperty('type', 'Failure.network'))
       ..add(DiagnosticsProperty('message', message));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ConnectionFailure &&
+        (other is NetworkFailure &&
             (identical(other.message, message) ||
                 const DeepCollectionEquality().equals(other.message, message)));
   }
@@ -303,29 +300,29 @@ class _$ConnectionFailure
 
   @JsonKey(ignore: true)
   @override
-  $ConnectionFailureCopyWith<ConnectionFailure> get copyWith =>
-      _$ConnectionFailureCopyWithImpl<ConnectionFailure>(this, _$identity);
+  $NetworkFailureCopyWith<NetworkFailure> get copyWith =>
+      _$NetworkFailureCopyWithImpl<NetworkFailure>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String message) $default, {
-    required TResult Function(String message) connection,
+    required TResult Function(String message) network,
     required TResult Function(String message) http,
   }) {
-    return connection(message);
+    return network(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String message)? $default, {
-    TResult Function(String message)? connection,
+    TResult Function(String message)? network,
     TResult Function(String message)? http,
     required TResult orElse(),
   }) {
-    if (connection != null) {
-      return connection(message);
+    if (network != null) {
+      return network(message);
     }
     return orElse();
   }
@@ -334,35 +331,35 @@ class _$ConnectionFailure
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Failure value) $default, {
-    required TResult Function(ConnectionFailure value) connection,
+    required TResult Function(NetworkFailure value) network,
     required TResult Function(HttpFailure value) http,
   }) {
-    return connection(this);
+    return network(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Failure value)? $default, {
-    TResult Function(ConnectionFailure value)? connection,
+    TResult Function(NetworkFailure value)? network,
     TResult Function(HttpFailure value)? http,
     required TResult orElse(),
   }) {
-    if (connection != null) {
-      return connection(this);
+    if (network != null) {
+      return network(this);
     }
     return orElse();
   }
 }
 
-abstract class ConnectionFailure implements Failure {
-  const factory ConnectionFailure([String message]) = _$ConnectionFailure;
+abstract class NetworkFailure implements Failure {
+  const factory NetworkFailure([String message]) = _$NetworkFailure;
 
   @override
   String get message => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $ConnectionFailureCopyWith<ConnectionFailure> get copyWith =>
+  $NetworkFailureCopyWith<NetworkFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -440,7 +437,7 @@ class _$HttpFailure with DiagnosticableTreeMixin implements HttpFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String message) $default, {
-    required TResult Function(String message) connection,
+    required TResult Function(String message) network,
     required TResult Function(String message) http,
   }) {
     return http(message);
@@ -450,7 +447,7 @@ class _$HttpFailure with DiagnosticableTreeMixin implements HttpFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String message)? $default, {
-    TResult Function(String message)? connection,
+    TResult Function(String message)? network,
     TResult Function(String message)? http,
     required TResult orElse(),
   }) {
@@ -464,7 +461,7 @@ class _$HttpFailure with DiagnosticableTreeMixin implements HttpFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Failure value) $default, {
-    required TResult Function(ConnectionFailure value) connection,
+    required TResult Function(NetworkFailure value) network,
     required TResult Function(HttpFailure value) http,
   }) {
     return http(this);
@@ -474,7 +471,7 @@ class _$HttpFailure with DiagnosticableTreeMixin implements HttpFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Failure value)? $default, {
-    TResult Function(ConnectionFailure value)? connection,
+    TResult Function(NetworkFailure value)? network,
     TResult Function(HttpFailure value)? http,
     required TResult orElse(),
   }) {

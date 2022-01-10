@@ -11,9 +11,9 @@ class Failure with _$Failure {
     @Default('Unexpected Error') String message,
   ]) = _Failure;
 
-  const factory Failure.connection([
-    @Default('Connection Error') String message,
-  ]) = ConnectionFailure;
+  const factory Failure.network([
+    @Default('Network Error') String message,
+  ]) = NetworkFailure;
 
   const factory Failure.http([
     @Default('Http Error') String message,

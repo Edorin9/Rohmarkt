@@ -20,7 +20,7 @@ class ConnectionChecker {
     if (await isConnected) {
       return executeJob();
     } else {
-      const failure = Failure.connection(
+      const failure = Failure.network(
           'No internet access.\nPlease connect to a reliable Wi-Fi network.');
       return Left(failure);
     }
